@@ -1,0 +1,122 @@
+[
+    {
+        "material_name":"Rev",
+        "quantity":264,
+        "unit_price":684.01,
+        "supplier_name":"Zoombeat",
+        "supplier_contact":"874-936-9521",
+        "purchase_date":"9/14/2022",
+        "expiration_date":"3/12/2025",
+        "storage_location":"Suite 95",
+        "material_type":"wood",
+        "weight":83.6
+    },
+    {
+        "material_name":"Rev",
+        "quantity":458,
+        "unit_price":859.11,
+        "supplier_name":"Vidoo",
+        "supplier_contact":"381-407-4110",
+        "purchase_date":"7/31/2022",
+        "expiration_date":"1/8/2025",
+        "storage_location":"Room 681",
+        "material_type":"glass",
+        "weight":20.5
+    },
+    {
+        "material_name":"Mr",
+        "quantity":495,
+        "unit_price":6.82,
+        "supplier_name":"Dynazzy",
+        "supplier_contact":"949-645-6607",
+        "purchase_date":"9/30/2022",
+        "expiration_date":"5/15/2024",
+        "storage_location":"PO Box 493",
+        "material_type":"plastic",
+        "weight":0.9
+    },
+    {
+        "material_name":"Honorable",
+        "quantity":905,
+        "unit_price":92.78,
+        "supplier_name":"Dabshots",
+        "supplier_contact":"119-795-3450",
+        "purchase_date":"10/30/2022",
+        "expiration_date":"12/25/2023",
+        "storage_location":"Apt 598",
+        "material_type":"plastic",
+        "weight":68.4
+    },
+    {
+        "material_name":"Rev",
+        "quantity":683,
+        "unit_price":265.67,
+        "supplier_name":"Plajo",
+        "supplier_contact":"936-449-8108",
+        "purchase_date":"2/6/2020",
+        "expiration_date":"7/10/2025",
+        "storage_location":"Suite 33",
+        "material_type":"metal",
+        "weight":66.2
+    },
+    {
+        "material_name":"Honorable",
+        "quantity":39,
+        "unit_price":196.29,
+        "supplier_name":"Dabtype",
+        "supplier_contact":"852-740-3925",
+        "purchase_date":"8/25/2021",
+        "expiration_date":"6/13/2025",
+        "storage_location":"Suite 93",
+        "material_type":"metal",
+        "weight":81.1
+    },
+    {
+        "material_name":"Mr",
+        "quantity":189,
+        "unit_price":784.28,
+        "supplier_name":"Kamba",
+        "supplier_contact":"270-245-1512",
+        "purchase_date":"7/29/2021",
+        "expiration_date":"8/23/2023",
+        "storage_location":"Suite 49",
+        "material_type":"glass",
+        "weight":85.5
+    },
+    {
+        "material_name":"Dr",
+        "quantity":225,
+        "unit_price":481.88,
+        "supplier_name":"Browseblab",
+        "supplier_contact":"353-407-5667",
+        "purchase_date":"12/28/2020",
+        "expiration_date":"8/31/2023",
+        "storage_location":"12th Floor",
+        "material_type":"metal",
+        "weight":91.4
+    },
+    {
+        "material_name":"Dr",
+        "quantity":939,
+        "unit_price":794.42,
+        "supplier_name":"Livefish",
+        "supplier_contact":"312-447-5557",
+        "purchase_date":"4/26/2020",
+        "expiration_date":"8/27/2024",
+        "storage_location":"Suite 29",
+        "material_type":"wood",
+        "weight":68.3
+    },
+    {
+        "material_name":"Ms",
+        "quantity":523,
+        "unit_price":481.95,
+        "supplier_name":"Meeveo",
+        "supplier_contact":"298-200-1001",
+        "purchase_date":"9/4/2021",
+        "expiration_date":"3/1/2025",
+        "storage_location":"Suite 28",
+        "material_type":"wood",
+        "weight":15.8
+    }
+]

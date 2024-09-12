@@ -1,0 +1,749 @@
+[
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f1a"},
+        "first_name":"Hillery",
+        "last_name":"Ivett",
+        "username":"hivett0",
+        "password":"$2a$04$jU0TLE8sx0Nu6ky53qWdE.ftk4OpxSRCE5/g9f4e13LiePaQzez.u",
+        "image":"http://dummyimage.com/224x100.png/cc0000/ffffff",
+        "role":"Estimator",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [{
+            "task_name":"Assemblying the cut pieces",
+            "due_date":"3/27/2024",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"In-Progress",
+            "completion_date": "TBD",
+            "resources_used": "84%",  
+            "estimated_time": "4 hours",
+            "actual_time": "3 hours"
+        }]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f1b"},
+        "first_name":"Giffard",
+        "last_name":"Wadlow",
+        "username":"gwadlow1",
+        "password":"$2a$04$mKnDJzvc.2MwLKYktjlomOiZtoHcn2QqdXc1qHh6t8l7gSwUoezlW",
+        "image":"http://dummyimage.com/127x100.png/5fa2dd/ffffff",
+        "role":"Engineer",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Cutting out the design",
+                "due_date":"8/5/2024",
+                "due_time": "20:00",
+                "priority":"Medium",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "74%",  
+                "estimated_time": "4.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"9/13/2023",
+                "due_time": "20:00",
+                "priority":"Medium",
+                "status":"Completed",
+                "completion_date": "9/13/2023",
+                "resources_used": "96%",  
+                "estimated_time": "5 hours",
+                "actual_time": "5 hours"
+            },
+            {
+                "task_name":"Picking up the resources",
+                "due_date":"10/11/2023",
+                "due_time": "12:00",
+                "priority":"Low",
+                "status":"Pending",
+                "completion_date": "TBD",
+                "resources_used": "92%",  
+                "estimated_time": "2.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"8/11/2024",
+                "due_time": "08:00",
+                "priority":"Low",           
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "89%",  
+                "estimated_time": "3 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"6/20/2024",
+                "due_time": "08:00",
+                "priority":"Medium",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "2.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"4/23/2024",
+                "due_time": "20:00",
+                "priority":"High",
+                "status":"Pending",
+                "completion_date": "TBD",
+                "resources_used": "86%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Picking up the resources",
+                "due_date":"12/25/2023",
+                "due_time": "08:00",
+                "priority":"High",
+                "status":"Rejected",
+                "completion_date": "TBD",
+                "resources_used": "96%",  
+                "estimated_time": "4 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Drafting the proposed design",
+                "due_date":"9/26/2023",
+                "due_time": "16:00",
+                "priority":"High",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "73%",  
+                "estimated_time": "4.5 hours",
+                "actual_time": "3.5 hours"
+            }
+        ]
+    },
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+        "first_name":"Clementina",
+        "last_name":"Troy",
+        "username":"ctroy2",
+        "password":"$2a$04$vD mscvYpQ5WjfCKILwgnvOO.UPt2rI2oyw1aSA41tYpqMKT8QNIO.",
+        "image":"http://dummyimage.com/197x100.png/cc0000/ffffff",
+        "role":"Project Manager",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Picking up the resources",
+                "due_date":"1/20/2024",
+                "due_time": "16:00",
+                "priority":"Medium",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Picking up the resources",
+                "due_date":"4/11/2024",
+                "due_time": "14:30",
+                "priority":"Low",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Sewing the materials",
+                "due_date":"3/17/2024",
+                "due_time": "16:00",
+                "priority":"Medium",
+                "status":"Completed",
+                "completion_date": "3/17/2024",
+                "resources_used": "98%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Attaching the branding",
+                "due_date":"6/25/2024",
+                "due_time": "17:30",
+                "priority":"Medium",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "62%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"3/4/2024",
+                "due_time": "12:00",
+                "priority":"Medium",
+                "status":"Completed",
+                "completion_date": "3/4/2024",
+                "resources_used": "89%",  
+                "estimated_time": "3 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Cutting the pieces",
+                "due_date":"5/23/2024",
+                "due_time": "14:30",
+                "priority":"High",
+                "status":"Rejected",
+                "completion_date": "TBD",
+                "resources_used": "90%",  
+                "estimated_time": "2.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Drafting the proposed design",
+                "due_date":"11/16/2023",
+                "due_time": "08:00",
+                "priority":"Medium",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "81%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"7/12/2024",
+                "due_time": "16:00",
+                "priority":"High",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "66%",  
+                "estimated_time": "4 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Cutting out the design",
+                "due_date":"2/1/2024",
+                "due_time": "14:30",
+                "priority":"Low",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "53%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            }
+        ]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+        "first_name":"Marrilee",
+        "last_name":"Lagadu",
+        "username":"mlagadu3",
+        "password":"$2a$04$42O/SCzTPqA5F6ZjNDf29OtFIhlnKwviV6NpAOsD.0GEn1lSYnZQW",
+        "image":"http://dummyimage.com/243x100.png/dddddd/000000",
+        "role":"Construction Expeditor",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Assemblying the cut pieces",
+                "due_date":"5/11/2024",
+                "due_time": "17:30",
+                "priority":"High",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "50%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Picking up the resources",
+                "due_date":"5/16/2024",
+                "due_time": "12:00",
+                "priority":"Low",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"12/1/2023",
+                "due_time": "14:30",
+                "priority":"High",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "68%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Picking up the resources",
+                "due_date":"9/26/2023",
+                "due_time": "16:00",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Drafting the proposed design",
+                "due_date":"2/21/2024",
+                "due_time": "12:00",
+                "priority":"Medium",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "79%",  
+                "estimated_time": "3 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Delivering the product to close-by customers",
+                "description":"Deliver the packaged product to the customer that are close-by and collect the pay",
+                "due_date":"4/21/2024",
+                "due_time": "08:00",
+                "priority":"High",
+                "status":"Completed",
+                "completion_date": "4/21/2024",
+                "resources_used": "98%",  
+                "estimated_time": "2.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Picking up the resources",
+                "due_date":"7/17/2024",
+                "due_time": "14:30",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Delivering the product to close-by customers",
+                "due_date":"8/8/2024",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "4 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"12/4/2023",
+                "due_time": "08:00",
+                "priority":"Medium",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Attaching the branding",
+                "due_date":"3/10/2024",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"Completed",
+                "completion_date": "3/10/2024",
+                "resources_used": "93%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Assemblying the cut pieces",
+                "due_date":"3/21/2024",
+                "due_time": "08:00",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            }
+        ]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+        "first_name":"Filberto",
+        "last_name":"Kuhnke",
+        "username":"fkuhnke4",
+        "password":"$2a$04$7IKV21IG1DIhiPSYNTCBgeCxNamLd3mXjn7MUhYCtZ/TCNRIka8zW",
+        "image":"http://dummyimage.com/229x100.png/ff4444/ffffff",
+        "role":"Project Manager",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Drafting the proposed design",
+                "due_date":"12/13/2023",
+                "due_time": "14:30",
+                "priority":"Medium",
+                "status":"Rejected",
+                "completion_date": "TBD",
+                "resources_used": "90%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Delivering the product to close-by customers",
+                "due_date":"8/22/2024",
+                "due_time": "17:30",
+                "priority":"Low",
+                "status":"Completed",
+                "completion_date": "8/22/2024",
+                "resources_used": "100%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"3/3/2024",
+                "due_time": "12:00",
+                "priority":"Low",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"11/22/2023",
+                "due_time": "08:00",
+                "priority":"Low",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "10%",  
+                "estimated_time": "2.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Cutting the pieces",
+                "due_date":"9/18/2023",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"Rejected",
+                "completion_date": "TBD",
+                "resources_used": "89%",  
+                "estimated_time": "3 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Delivering the product to close-by customers",
+                "due_date":"6/23/2024",
+                "due_time": "17:30",
+                "priority":"Low",
+                "status":"Completed",
+                "completion_date": "6/23/2024",
+                "resources_used": "98%",  
+                "estimated_time": "2.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Attaching the branding",
+                "due_date":"5/13/2024",
+                "due_time": "08:00",
+                "priority":"Low",
+                "status":"Completed",
+                "completion_date": "5/13/2024",
+                "resources_used": "100%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"4/6/2024",
+                "due_time": "20:00",
+                "priority":"Medium",
+                "status":"Completed",
+                "completion_date": "4/6/2024",
+                "resources_used": "100%",  
+                "estimated_time": "4 hours",
+                "actual_time": "3.5 hours"
+            }
+        ]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+        "first_name":"Kimball",
+        "last_name":"Bullene",
+        "username":"kbullene5",
+        "password":"$2a$04$nMDUCAWlMN/1Jk.kxcYwaewTCIdvVtdg4TXx7aoYAK6vuwMVeqCxa",
+        "image":"http://dummyimage.com/225x100.png/dddddd/000000",
+        "role":"Architect",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Delivering the product to close-by customers",
+                "due_date":"6/29/2024",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"12/8/2023",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"8/13/2024",
+                "due_time": "12:00",
+                "priority":"Low",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "68%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "3.5 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"2/15/2024",
+                "due_time": "20:00",
+                "priority":"High",
+                "status":"Completed",
+                "completion_date": "2/15/2024",
+                "resources_used": "96%",  
+                "estimated_time": "3.5 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Drafting the proposed design",
+                "due_date":"1/17/2024",
+                "due_time": "20:00",
+                "priority":"Medium",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "69%",  
+                "estimated_time": "3 hours",
+                "actual_time": "2.5 hours"
+            },
+            {
+                "task_name":"Cross-eaxmining the previous tasks",
+                "due_date":"1/16/2024",
+                "due_time": "12:00",
+                "priority":"Low",
+                "status":"Completed",
+                "completion_date": "1/16/2024",
+                "resources_used": "98%",  
+                "estimated_time": "2.5 hours",
+                "actual_time": "2.5 hours"
+            }
+        ]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f20"},
+        "first_name":"Babs",
+        "last_name":"Kleeborn",
+        "username":"bkleeborn6",
+        "password":"$2a$04$x0wTeDg5R5jcibbrL16/v.P3e/17uWWdwlY5GtS7F.yWzAMYNWp4.",
+        "image":"http://dummyimage.com/249x100.png/dddddd/000000",
+        "role":"Supervisor",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Packaging the product",
+                "due_date":"9/5/2023",
+                "due_time": "16:00",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"12/13/2023",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"Completed",
+                "completion_date": "12/13/2023",
+                "resources_used": "100%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            }
+        ]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f21"},
+        "first_name":"Shoshanna",
+        "last_name":"Antonias",
+        "username":"santonias7",
+        "password":"$2a$04$2eQxacN/VCdC9P.oiKYbfemDX.FTKUTsJtHDnVQcIUZQ6UiqSfz1.",
+        "image":"http://dummyimage.com/167x100.png/5fa2dd/ffffff",
+        "role":"Engineer",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Drafting the proposed design",
+                "due_date":"3/11/2024",
+                "due_time": "08:00",
+                "priority":"Medium",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "60%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            }
+        ]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f22"},
+        "first_name":"Elfrida",
+        "last_name":"Croy",
+        "username":"ecroy8",
+        "password":"$2a$04$rxbuOwnJ7stwiBKgq2De2eIb9baWQYDMWPL9/JhJe/NucvVbvB5Aq",
+        "image":"http://dummyimage.com/158x100.png/ff4444/ffffff",
+        "role":"Subcontractor",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Cutting out the design",
+                "due_date":"3/2/2024",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "20%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Packaging the product",
+                "due_date":"1/4/2024",
+                "due_time": "08:00",
+                "priority":"Medium",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            }
+        ]
+    },
+
+    {
+        "_id":{"$oid":"66d5a483fc13ae66b4e25f23"},
+        "first_name":"Emmie",
+        "last_name":"Plume",
+        "username":"eplume9",
+        "password":"$2a$04$tOERRHjfxo0A06CuUxZQeekUL0xKlWf7FQPaSfrekFX0SL2gTQn6K",
+        "image":"http://dummyimage.com/206x100.png/5fa2dd/ffffff",
+        "role":"Construction Expeditor",
+        "skill": [],
+        "notification":[{
+            "id": "",
+            "from": "OptiWork Team",
+            "msg": "Welcome to OptiWork",
+            "date": "09/03/2024",
+            "time": "16:51"
+        }],
+        "tasks": [
+            {
+                "task_name":"Cutting the pieces",
+                "due_date":"10/19/2023",
+                "due_time": "16:00",
+                "priority":"Low",
+                "status":"Rejected",
+                "completion_date": "TBD",
+                "resources_used": "91%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Sewing the materials",
+                "due_date":"12/2/2023",
+                "due_time": "12:00",
+                "priority":"Low",
+                "status":"Completed",
+                "completion_date": "12/2/2023",
+                "resources_used": "0%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            }
+        ]
+    }
+]

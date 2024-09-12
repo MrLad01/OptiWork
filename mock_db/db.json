@@ -1,0 +1,2125 @@
+{ 
+  "tasks" :  [
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f04"},
+            "task_number": "100001",
+            "task_name":"Assemblying the cut pieces",
+            "description":"Assemble the pieces of the cut material and ready them for sewing",
+            "due_date":"3/27/2024",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1a"},
+            "resources": [
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 225
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f05"},
+            "task_number": "100002",
+            "task_name":"Cutting the pieces",
+            "description":"Cut the given material to a 2x20000 piece",
+            "due_date":"10/19/2023",
+            "due_time": "16:00",
+            "priority":"Low",
+            "status":"Blocked",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f23"},
+            "resources": [
+                {
+                    "material_name": "Honorable",
+                    "quantity": 905,
+                    "unit_price": 92.78
+                }
+            ],
+            "amount": 905
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f06"},
+            "task_number": "100003",
+            "task_name":"Sewing the materials",
+            "description":"Sew the materials to the already prepared design",
+            "due_date":"12/2/2023",
+            "due_time": "12:00",
+            "priority":"Low",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f23"},
+            "resources": [
+                {
+                    "material_name": "Rev",
+                    "quantity": 683,
+                    "unit_price": 265.67
+                },
+                {
+                    "material_name": "Honorable",
+                    "quantity": 905,
+                    "unit_price": 92.78
+                },
+                {
+                    "material_name": "Rev",
+                    "quantity": 458,
+                    "unit_price": 859.11
+                }
+            ],
+            "amount": 2046
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f07"},
+            "task_number": "100004",
+            "task_name":"Drafting the proposed design",
+            "description":"Lay put the proposed design for the final project and ready for cutting",
+            "due_date":"3/11/2024",
+            "due_time": "08:00",
+            "priority":"Medium",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f21"},
+            "resources": [
+                {
+                    "material_name": "Rev",
+                    "quantity": 264,
+                    "unit_price": 684.01
+                },
+                {
+                    "material_name": "Mr",
+                    "quantity": 189,
+                    "unit_price": 784.28
+                },
+                {
+                    "material_name": "Ms",
+                    "quantity": 523,
+                    "unit_price": 481.95
+                }
+            ],
+            "amount": 976
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f08"},
+            "task_number": "100005",
+            "task_name":"Cutting out the design",
+            "description":"Cut out the proposed design and ready for assemblying",
+            "due_date":"3/2/2024",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"In-Progress",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f22"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 189,
+                    "unit_price": 784.28
+                },
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Rev",
+                    "quantity": 264,
+                    "unit_price": 684.01
+                }
+            ],
+            "amount": 948
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f09"},
+            "task_number": "100006",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"1/4/2024",
+            "due_time": "08:00",
+            "priority":"Medium",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f22"},
+            "resources": [
+                {
+                    "material_name": "Dr",
+                    "quantity": 939,
+                    "unit_price": 794.42
+                },
+                {
+                    "material_name": "Honorable",
+                    "quantity": 905,
+                    "unit_price": 92.78
+                },
+                {
+                    "material_name": "Rev",
+                    "quantity": 264,
+                    "unit_price": 684.01
+                }
+            ],
+            "amount": 2108
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f0a"},
+            "task_number": "100007",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"9/5/2023",
+            "due_time": "16:00",
+            "priority":"High",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f20"},
+            "resources": [
+                {
+                    "material_name": "Ms",
+                    "quantity": 523,
+                    "unit_price": 481.95
+                }
+            ],
+            "amount": 523
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f0b"},
+            "task_number": "100008",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"12/13/2023",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f20"},
+            "resources": [
+                {
+                    "material_name": "Rev",
+                    "quantity": 458,
+                    "unit_price": 859.11
+                }
+            ],
+            "amount": 458
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f0c"},
+            "task_number": "100009",
+            "task_name":"Delivering the product to close-by customers",
+            "description":"Deliver the packaged product to the customer that are close-by and collect the pay",
+            "due_date":"6/29/2024",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Honorable",
+                    "quantity": 905,
+                    "unit_price": 92.78
+                }
+            ],
+            "amount": 1400
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f0d"},
+            "task_number": "100010",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"12/8/2023",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f0e"},
+            "task_number": "110001",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"8/13/2024",
+            "due_time": "12:00",
+            "priority":"Low",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f0f"},
+            "task_number": "100001",
+            "task_name":"Cutting out the design",
+            "description":"Cut out the proposed design and ready for assemblying",
+            "due_date":"8/5/2024",
+            "due_time": "20:00",
+            "priority":"Medium",
+            "status":"In-Progress",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f10"},
+            "task_number": "110002",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"9/13/2023",
+            "due_time": "20:00",
+            "priority":"Medium",
+            "status":"Completed",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f11"},
+            "task_number": "110003",
+            "task_name":"Picking up the resources",
+            "description":"Collect your assigned resources from your supervisor",
+            "due_date":"10/11/2023",
+            "due_time": "12:00",
+            "priority":"Low",
+            "status":"Pending",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f12"},
+            "task_number": "110004",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"8/11/2024",
+            "due_time": "08:00",
+            "priority":"Low",
+            "status":"In-Progress",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f13"},
+            "task_number": "110005",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"6/20/2024",
+            "due_time": "08:00",
+            "priority":"Medium",
+            "status":"New",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+            
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f14"},
+            "task_number": "110006",
+            "task_name":"Packaging the product",
+            "description":"Package the product and readying them for pickup",
+            "due_date":"4/23/2024",
+            "due_time": "20:00",
+            "priority":"High",
+            "status":"Pending",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f15"},
+            "task_number": "110007",
+            "task_name":"Picking up the resources",
+            "description":"Collect your assigned resources from your supervisor",
+            "due_date":"12/25/2023",
+            "due_time": "08:00",
+            "priority":"High",
+            "status":"Blocked",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f16"},
+            "task_number": "110008",
+            "task_name":"Drafting the proposed design",
+            "description":"Lay put the proposed design for the final project and ready for cutting",
+            "due_date":"9/26/2023",
+            "due_time": "16:00",
+            "priority":"High",
+            "status":"In-Progress",
+            "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f17"},
+            "task_number": "110009",
+            "task_name":"Picking up the resources",
+            "description":"Collect your assigned resources from your supervisor",
+            "due_date":"1/20/2024",
+            "due_time": "16:00",
+            "priority":"Medium",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f18"},
+            "task_number": "110010",
+            "task_name":"Picking up the resources",
+            "description":"Collect your assigned resources from your supervisor",
+            "due_date":"4/11/2024",
+            "due_time": "14:30",
+            "priority":"Low",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f19"},
+            "task_number": "120001",
+            "task_name":"Sewing the materials",
+            "description":"Sew the materials to the already prepared design",
+            "due_date":"3/17/2024",
+            "due_time": "16:00",
+            "priority":"Medium",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f1a"},
+            "task_number": "120002",
+            "task_name":"Attaching the branding",
+            "description":"Attach the brands to the ready-made products before packaging",
+            "due_date":"6/25/2024",
+            "due_time": "17:30",
+            "priority":"Medium",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f1b"},
+            "task_number": "120003",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"3/4/2024",
+            "due_time": "12:00",
+            "priority":"Medium",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f1c"},
+            "task_number": "120004",
+            "task_name":"Cutting the pieces",
+            "description":"Cut the given material to a 2x20000 piece",
+            "due_date":"5/23/2024",
+            "due_time": "14:30",
+            "priority":"High",
+            "status":"Blocked",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f1d"},
+            "task_number": "120005",
+            "task_name":"Drafting the proposed design",
+            "description":"Lay put the proposed design for the final project and ready for cutting",
+            "due_date":"11/16/2023",
+            "due_time": "08:00",
+            "priority":"Medium",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f1e"},
+            "task_number": "120006",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"7/12/2024",
+            "due_time": "16:00",
+            "priority":"High",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f1f"},
+            "task_number": "120007",
+            "task_name":"Cutting out the design",
+            "description":"Cut out the proposed design and ready for assemblying",
+            "due_date":"2/1/2024",
+            "due_time": "14:30",
+            "priority":"Low",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f20"},
+            "task_number": "120008",
+            "task_name":"Assemblying the cut pieces",
+            "description":"Assemble the pieces of the cut material and ready them for sewing Open Approach",
+            "due_date":"5/11/2024",
+            "due_time": "17:30",
+            "priority":"High",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f21"},
+            "task_number": "120009",
+            "task_name":"Picking up the resources",
+            "description":"Collect your assigned resources from your supervisor",
+            "due_date":"5/16/2024",
+            "due_time": "12:00",
+            "priority":"Low",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f22"},
+            "task_number": "120010",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"12/1/2023",
+            "due_time": "14:30",
+            "priority":"High",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f23"},
+            "task_number": "130001",
+            "task_name":"Picking up the resources",
+            "description":"Collect your assigned resources from your supervisor",
+            "due_date":"9/26/2023",
+            "due_time": "16:00",
+            "priority":"High",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f24"},
+            "task_number": "130002",
+            "task_name":"Drafting the proposed design",
+            "description":"Lay put the proposed design for the final project and ready for cutting",
+            "due_date":"2/21/2024",
+            "due_time": "12:00",
+            "priority":"Medium",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f25"},
+            "task_number": "130003",
+            "task_name":"Delivering the product to close-by customers",
+            "description":"Deliver the packaged product to the customer that are close-by and collect the pay",
+            "due_date":"4/21/2024",
+            "due_time": "08:00",
+            "priority":"High",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f26"},
+            "task_number": "130004",
+            "task_name":"Picking up the resources",
+            "description":"Collect your assigned resources from your supervisor",
+            "due_date":"7/17/2024",
+            "due_time": "14:30",
+            "priority":"High",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f27"},
+            "task_number": "130005",
+            "task_name":"Delivering the product to close-by customers",
+            "description":"Deliver the packaged product to the customer that are close-by and collect the pay",
+            "due_date":"8/8/2024",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f28"},
+            "task_number": "130006",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"12/4/2023",
+            "due_time": "08:00",
+            "priority":"Medium",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f29"},
+            "task_number": "130007",
+            "task_name":"Attaching the branding",
+            "description":"Attach the brands to the ready-made products before packaging",
+            "due_date":"3/10/2024",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f2a"},
+            "task_number": "130008",
+            "task_name":"Assemblying the cut pieces",
+            "description":"Assemble the pieces of the cut material and ready them for sewing",
+            "due_date":"3/21/2024",
+            "due_time": "08:00",
+            "priority":"High",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f2b"},
+            "task_number": "130009",
+            "task_name":"Drafting the proposed design",
+            "description":"Lay put the proposed design for the final project and ready for cutting",
+            "due_date":"12/13/2023",
+            "due_time": "14:30",
+            "priority":"Medium",
+            "status":"Blocked",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f2c"},
+            "task_number": "130010",
+            "task_name":"Delivering the product to close-by customers",
+            "description":"Deliver the packaged product to the customer that are close-by and collect the pay",
+            "due_date":"8/22/2024",
+            "due_time": "17:30",
+            "priority":"Low",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f2d"},
+            "task_number": "140001",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"3/3/2024",
+            "due_time": "12:00",
+            "priority":"Low",
+            "status":"New",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f2e"},
+            "task_number": "140002",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"11/22/2023",
+            "due_time": "08:00",
+            "priority":"Low",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f2f"},
+            "task_number": "140003",
+            "task_name":"Cutting the pieces",
+            "description":"Cut the given material to a 2x20000 piece",
+            "due_date":"9/18/2023",
+            "due_time": "12:00",
+            "priority":"High",
+            "status":"Blocked",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f30"},
+            "task_number": "140004",
+            "task_name":"Delivering the product to close-by customers",
+            "description":"Deliver the packaged product to the customer that are close-by and collect the pay",
+            "due_date":"6/23/2024",
+            "due_time": "17:30",
+            "priority":"Low",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f31"},
+            "task_number": "140005",
+            "task_name":"Attaching the branding",
+            "description":"Attach the brands to the ready-made products before packaging",
+            "due_date":"5/13/2024",
+            "due_time": "08:00",
+            "priority":"Low",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f32"},
+            "task_number": "140006",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"4/6/2024",
+            "due_time": "20:00",
+            "priority":"Medium",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f33"},
+            "task_number": "140007",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"2/15/2024",
+            "due_time": "20:00",
+            "priority":"High",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f34"},
+            "task_number": "140008",
+            "task_name":"Drafting the proposed design",
+            "description":"Lay put the proposed design for the final project and ready for cutting",
+            "due_date":"1/17/2024",
+            "due_time": "20:00",
+            "priority":"Medium",
+            "status":"In-Progress",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        },
+
+        {
+            "id" : { "$oid":"66d5a6a9fc13ae676ae25f35"},
+            "task_number": "140009",
+            "task_name":"Cross-eaxmining the previous tasks",
+            "description":"Cross examining the tasks entered on the computer",
+            "due_date":"1/16/2024",
+            "due_time": "12:00",
+            "priority":"Low",
+            "status":"Completed",
+            "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+            "resources": [
+                {
+                    "material_name": "Mr",
+                    "quantity": 495,
+                    "unit_price": 6.82
+                },
+                {
+                    "material_name": "Dr",
+                    "quantity": 225,
+                    "unit_price": 481.88
+                }
+            ],
+            "amount": 720
+        }
+    ], 
+    "users" : [
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f1a"},
+            "first_name":"Hillery",
+            "last_name":"Ivett",
+            "username":"hivett0",
+            "password":"$2a$04$jU0TLE8sx0Nu6ky53qWdE.ftk4OpxSRCE5/g9f4e13LiePaQzez.u",
+            "image":"http://dummyimage.com/224x100.png/cc0000/ffffff",
+            "role":"Estimator",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [{
+                "task_name":"Assemblying the cut pieces",
+                "due_date":"3/27/2024",
+                "due_time": "12:00",
+                "priority":"High",
+                "status":"In-Progress",
+                "completion_date": "TBD",
+                "resources_used": "84%",  
+                "estimated_time": "4 hours",
+                "actual_time": "3 hours"
+            }]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f1b"},
+            "first_name":"Giffard",
+            "last_name":"Wadlow",
+            "username":"gwadlow1",
+            "password":"$2a$04$mKnDJzvc.2MwLKYktjlomOiZtoHcn2QqdXc1qHh6t8l7gSwUoezlW",
+            "image":"http://dummyimage.com/127x100.png/5fa2dd/ffffff",
+            "role":"Engineer",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Cutting out the design",
+                    "due_date":"8/5/2024",
+                    "due_time": "20:00",
+                    "priority":"Medium",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "74%",  
+                    "estimated_time": "4.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"9/13/2023",
+                    "due_time": "20:00",
+                    "priority":"Medium",
+                    "status":"Completed",
+                    "completion_date": "9/13/2023",
+                    "resources_used": "96%",  
+                    "estimated_time": "5 hours",
+                    "actual_time": "5 hours"
+                },
+                {
+                    "task_name":"Picking up the resources",
+                    "due_date":"10/11/2023",
+                    "due_time": "12:00",
+                    "priority":"Low",
+                    "status":"Pending",
+                    "completion_date": "TBD",
+                    "resources_used": "92%",  
+                    "estimated_time": "2.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"8/11/2024",
+                    "due_time": "08:00",
+                    "priority":"Low",           
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "89%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"6/20/2024",
+                    "due_time": "08:00",
+                    "priority":"Medium",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "2.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"4/23/2024",
+                    "due_time": "20:00",
+                    "priority":"High",
+                    "status":"Pending",
+                    "completion_date": "TBD",
+                    "resources_used": "86%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Picking up the resources",
+                    "due_date":"12/25/2023",
+                    "due_time": "08:00",
+                    "priority":"High",
+                    "status":"Rejected",
+                    "completion_date": "TBD",
+                    "resources_used": "96%",  
+                    "estimated_time": "4 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Drafting the proposed design",
+                    "due_date":"9/26/2023",
+                    "due_time": "16:00",
+                    "priority":"High",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "73%",  
+                    "estimated_time": "4.5 hours",
+                    "actual_time": "3.5 hours"
+                }
+            ]
+        },
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f1c"},
+            "first_name":"Clementina",
+            "last_name":"Troy",
+            "username":"ctroy2",
+            "password":"$2a$04$vD mscvYpQ5WjfCKILwgnvOO.UPt2rI2oyw1aSA41tYpqMKT8QNIO.",
+            "image":"http://dummyimage.com/197x100.png/cc0000/ffffff",
+            "role":"Project Manager",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Picking up the resources",
+                    "due_date":"1/20/2024",
+                    "due_time": "16:00",
+                    "priority":"Medium",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Picking up the resources",
+                    "due_date":"4/11/2024",
+                    "due_time": "14:30",
+                    "priority":"Low",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Sewing the materials",
+                    "due_date":"3/17/2024",
+                    "due_time": "16:00",
+                    "priority":"Medium",
+                    "status":"Completed",
+                    "completion_date": "3/17/2024",
+                    "resources_used": "98%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Attaching the branding",
+                    "due_date":"6/25/2024",
+                    "due_time": "17:30",
+                    "priority":"Medium",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "62%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"3/4/2024",
+                    "due_time": "12:00",
+                    "priority":"Medium",
+                    "status":"Completed",
+                    "completion_date": "3/4/2024",
+                    "resources_used": "89%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Cutting the pieces",
+                    "due_date":"5/23/2024",
+                    "due_time": "14:30",
+                    "priority":"High",
+                    "status":"Rejected",
+                    "completion_date": "TBD",
+                    "resources_used": "90%",  
+                    "estimated_time": "2.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Drafting the proposed design",
+                    "due_date":"11/16/2023",
+                    "due_time": "08:00",
+                    "priority":"Medium",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "81%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"7/12/2024",
+                    "due_time": "16:00",
+                    "priority":"High",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "66%",  
+                    "estimated_time": "4 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Cutting out the design",
+                    "due_date":"2/1/2024",
+                    "due_time": "14:30",
+                    "priority":"Low",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "53%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                }
+            ]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f1d"},
+            "first_name":"Marrilee",
+            "last_name":"Lagadu",
+            "username":"mlagadu3",
+            "password":"$2a$04$42O/SCzTPqA5F6ZjNDf29OtFIhlnKwviV6NpAOsD.0GEn1lSYnZQW",
+            "image":"http://dummyimage.com/243x100.png/dddddd/000000",
+            "role":"Construction Expeditor",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Assemblying the cut pieces",
+                    "due_date":"5/11/2024",
+                    "due_time": "17:30",
+                    "priority":"High",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "50%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Picking up the resources",
+                    "due_date":"5/16/2024",
+                    "due_time": "12:00",
+                    "priority":"Low",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"12/1/2023",
+                    "due_time": "14:30",
+                    "priority":"High",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "68%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Picking up the resources",
+                    "due_date":"9/26/2023",
+                    "due_time": "16:00",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Drafting the proposed design",
+                    "due_date":"2/21/2024",
+                    "due_time": "12:00",
+                    "priority":"Medium",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "79%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Delivering the product to close-by customers",
+                    "description":"Deliver the packaged product to the customer that are close-by and collect the pay",
+                    "due_date":"4/21/2024",
+                    "due_time": "08:00",
+                    "priority":"High",
+                    "status":"Completed",
+                    "completion_date": "4/21/2024",
+                    "resources_used": "98%",  
+                    "estimated_time": "2.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Picking up the resources",
+                    "due_date":"7/17/2024",
+                    "due_time": "14:30",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Delivering the product to close-by customers",
+                    "due_date":"8/8/2024",
+                    "due_time": "12:00",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "4 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"12/4/2023",
+                    "due_time": "08:00",
+                    "priority":"Medium",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Attaching the branding",
+                    "due_date":"3/10/2024",
+                    "due_time": "12:00",
+                    "priority":"High",
+                    "status":"Completed",
+                    "completion_date": "3/10/2024",
+                    "resources_used": "93%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Assemblying the cut pieces",
+                    "due_date":"3/21/2024",
+                    "due_time": "08:00",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                }
+            ]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f1e"},
+            "first_name":"Filberto",
+            "last_name":"Kuhnke",
+            "username":"fkuhnke4",
+            "password":"$2a$04$7IKV21IG1DIhiPSYNTCBgeCxNamLd3mXjn7MUhYCtZ/TCNRIka8zW",
+            "image":"http://dummyimage.com/229x100.png/ff4444/ffffff",
+            "role":"Project Manager",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Drafting the proposed design",
+                    "due_date":"12/13/2023",
+                    "due_time": "14:30",
+                    "priority":"Medium",
+                    "status":"Rejected",
+                    "completion_date": "TBD",
+                    "resources_used": "90%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Delivering the product to close-by customers",
+                    "due_date":"8/22/2024",
+                    "due_time": "17:30",
+                    "priority":"Low",
+                    "status":"Completed",
+                    "completion_date": "8/22/2024",
+                    "resources_used": "100%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"3/3/2024",
+                    "due_time": "12:00",
+                    "priority":"Low",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"11/22/2023",
+                    "due_time": "08:00",
+                    "priority":"Low",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "10%",  
+                    "estimated_time": "2.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Cutting the pieces",
+                    "due_date":"9/18/2023",
+                    "due_time": "12:00",
+                    "priority":"High",
+                    "status":"Rejected",
+                    "completion_date": "TBD",
+                    "resources_used": "89%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Delivering the product to close-by customers",
+                    "due_date":"6/23/2024",
+                    "due_time": "17:30",
+                    "priority":"Low",
+                    "status":"Completed",
+                    "completion_date": "6/23/2024",
+                    "resources_used": "98%",  
+                    "estimated_time": "2.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Attaching the branding",
+                    "due_date":"5/13/2024",
+                    "due_time": "08:00",
+                    "priority":"Low",
+                    "status":"Completed",
+                    "completion_date": "5/13/2024",
+                    "resources_used": "100%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"4/6/2024",
+                    "due_time": "20:00",
+                    "priority":"Medium",
+                    "status":"Completed",
+                    "completion_date": "4/6/2024",
+                    "resources_used": "100%",  
+                    "estimated_time": "4 hours",
+                    "actual_time": "3.5 hours"
+                }
+            ]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f1f"},
+            "first_name":"Kimball",
+            "last_name":"Bullene",
+            "username":"kbullene5",
+            "password":"$2a$04$nMDUCAWlMN/1Jk.kxcYwaewTCIdvVtdg4TXx7aoYAK6vuwMVeqCxa",
+            "image":"http://dummyimage.com/225x100.png/dddddd/000000",
+            "role":"Architect",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Delivering the product to close-by customers",
+                    "due_date":"6/29/2024",
+                    "due_time": "12:00",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"12/8/2023",
+                    "due_time": "12:00",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"8/13/2024",
+                    "due_time": "12:00",
+                    "priority":"Low",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "68%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "3.5 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"2/15/2024",
+                    "due_time": "20:00",
+                    "priority":"High",
+                    "status":"Completed",
+                    "completion_date": "2/15/2024",
+                    "resources_used": "96%",  
+                    "estimated_time": "3.5 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Drafting the proposed design",
+                    "due_date":"1/17/2024",
+                    "due_time": "20:00",
+                    "priority":"Medium",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "69%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "2.5 hours"
+                },
+                {
+                    "task_name":"Cross-eaxmining the previous tasks",
+                    "due_date":"1/16/2024",
+                    "due_time": "12:00",
+                    "priority":"Low",
+                    "status":"Completed",
+                    "completion_date": "1/16/2024",
+                    "resources_used": "98%",  
+                    "estimated_time": "2.5 hours",
+                    "actual_time": "2.5 hours"
+                }
+            ]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f20"},
+            "first_name":"Babs",
+            "last_name":"Kleeborn",
+            "username":"bkleeborn6",
+            "password":"$2a$04$x0wTeDg5R5jcibbrL16/v.P3e/17uWWdwlY5GtS7F.yWzAMYNWp4.",
+            "image":"http://dummyimage.com/249x100.png/dddddd/000000",
+            "role":"Supervisor",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"9/5/2023",
+                    "due_time": "16:00",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"12/13/2023",
+                    "due_time": "12:00",
+                    "priority":"High",
+                    "status":"Completed",
+                    "completion_date": "12/13/2023",
+                    "resources_used": "100%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                }
+            ]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f21"},
+            "first_name":"Shoshanna",
+            "last_name":"Antonias",
+            "username":"santonias7",
+            "password":"$2a$04$2eQxacN/VCdC9P.oiKYbfemDX.FTKUTsJtHDnVQcIUZQ6UiqSfz1.",
+            "image":"http://dummyimage.com/167x100.png/5fa2dd/ffffff",
+            "role":"Engineer",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Drafting the proposed design",
+                    "due_date":"3/11/2024",
+                    "due_time": "08:00",
+                    "priority":"Medium",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "60%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                }
+            ]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f22"},
+            "first_name":"Elfrida",
+            "last_name":"Croy",
+            "username":"ecroy8",
+            "password":"$2a$04$rxbuOwnJ7stwiBKgq2De2eIb9baWQYDMWPL9/JhJe/NucvVbvB5Aq",
+            "image":"http://dummyimage.com/158x100.png/ff4444/ffffff",
+            "role":"Subcontractor",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Cutting out the design",
+                    "due_date":"3/2/2024",
+                    "due_time": "12:00",
+                    "priority":"High",
+                    "status":"In-Progress",
+                    "completion_date": "TBD",
+                    "resources_used": "20%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Packaging the product",
+                    "due_date":"1/4/2024",
+                    "due_time": "08:00",
+                    "priority":"Medium",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                }
+            ]
+        },
+    
+        {
+            "_id":{"$oid":"66d5a483fc13ae66b4e25f23"},
+            "first_name":"Emmie",
+            "last_name":"Plume",
+            "username":"eplume9",
+            "password":"$2a$04$tOERRHjfxo0A06CuUxZQeekUL0xKlWf7FQPaSfrekFX0SL2gTQn6K",
+            "image":"http://dummyimage.com/206x100.png/5fa2dd/ffffff",
+            "role":"Construction Expeditor",
+            "skill": [],
+            "notification":[{
+                "id": "",
+                "from": "OptiWork Team",
+                "msg": "Welcome to OptiWork",
+                "date": "09/03/2024",
+                "time": "16:51"
+            }],
+            "tasks": [
+                {
+                    "task_name":"Cutting the pieces",
+                    "due_date":"10/19/2023",
+                    "due_time": "16:00",
+                    "priority":"Low",
+                    "status":"Rejected",
+                    "completion_date": "TBD",
+                    "resources_used": "91%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
+                    "task_name":"Sewing the materials",
+                    "due_date":"12/2/2023",
+                    "due_time": "12:00",
+                    "priority":"Low",
+                    "status":"Completed",
+                    "completion_date": "12/2/2023",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                }
+            ]
+        }
+    ],
+    "resources" : [
+        {
+            "material_name":"Rev",
+            "quantity":264,
+            "unit_price":684.01,
+            "supplier_name":"Zoombeat",
+            "supplier_contact":"874-936-9521",
+            "purchase_date":"9/14/2022",
+            "expiration_date":"3/12/2025",
+            "storage_location":"Suite 95",
+            "material_type":"wood",
+            "weight":83.6
+        },
+        {
+            "material_name":"Rev",
+            "quantity":458,
+            "unit_price":859.11,
+            "supplier_name":"Vidoo",
+            "supplier_contact":"381-407-4110",
+            "purchase_date":"7/31/2022",
+            "expiration_date":"1/8/2025",
+            "storage_location":"Room 681",
+            "material_type":"glass",
+            "weight":20.5
+        },
+        {
+            "material_name":"Mr",
+            "quantity":495,
+            "unit_price":6.82,
+            "supplier_name":"Dynazzy",
+            "supplier_contact":"949-645-6607",
+            "purchase_date":"9/30/2022",
+            "expiration_date":"5/15/2024",
+            "storage_location":"PO Box 493",
+            "material_type":"plastic",
+            "weight":0.9
+        },
+        {
+            "material_name":"Honorable",
+            "quantity":905,
+            "unit_price":92.78,
+            "supplier_name":"Dabshots",
+            "supplier_contact":"119-795-3450",
+            "purchase_date":"10/30/2022",
+            "expiration_date":"12/25/2023",
+            "storage_location":"Apt 598",
+            "material_type":"plastic",
+            "weight":68.4
+        },
+        {
+            "material_name":"Rev",
+            "quantity":683,
+            "unit_price":265.67,
+            "supplier_name":"Plajo",
+            "supplier_contact":"936-449-8108",
+            "purchase_date":"2/6/2020",
+            "expiration_date":"7/10/2025",
+            "storage_location":"Suite 33",
+            "material_type":"metal",
+            "weight":66.2
+        },
+        {
+            "material_name":"Honorable",
+            "quantity":39,
+            "unit_price":196.29,
+            "supplier_name":"Dabtype",
+            "supplier_contact":"852-740-3925",
+            "purchase_date":"8/25/2021",
+            "expiration_date":"6/13/2025",
+            "storage_location":"Suite 93",
+            "material_type":"metal",
+            "weight":81.1
+        },
+        {
+            "material_name":"Mr",
+            "quantity":189,
+            "unit_price":784.28,
+            "supplier_name":"Kamba",
+            "supplier_contact":"270-245-1512",
+            "purchase_date":"7/29/2021",
+            "expiration_date":"8/23/2023",
+            "storage_location":"Suite 49",
+            "material_type":"glass",
+            "weight":85.5
+        },
+        {
+            "material_name":"Dr",
+            "quantity":225,
+            "unit_price":481.88,
+            "supplier_name":"Browseblab",
+            "supplier_contact":"353-407-5667",
+            "purchase_date":"12/28/2020",
+            "expiration_date":"8/31/2023",
+            "storage_location":"12th Floor",
+            "material_type":"metal",
+            "weight":91.4
+        },
+        {
+            "material_name":"Dr",
+            "quantity":939,
+            "unit_price":794.42,
+            "supplier_name":"Livefish",
+            "supplier_contact":"312-447-5557",
+            "purchase_date":"4/26/2020",
+            "expiration_date":"8/27/2024",
+            "storage_location":"Suite 29",
+            "material_type":"wood",
+            "weight":68.3
+        },
+        {
+            "material_name":"Ms",
+            "quantity":523,
+            "unit_price":481.95,
+            "supplier_name":"Meeveo",
+            "supplier_contact":"298-200-1001",
+            "purchase_date":"9/4/2021",
+            "expiration_date":"3/1/2025",
+            "storage_location":"Suite 28",
+            "material_type":"wood",
+            "weight":15.8
+        }
+    ]
+}
