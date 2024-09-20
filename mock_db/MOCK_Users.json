@@ -1,10 +1,11 @@
 [
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f1a"},
         "first_name":"Hillery",
         "last_name":"Ivett",
         "username":"hivett0",
         "password":"$2a$04$jU0TLE8sx0Nu6ky53qWdE.ftk4OpxSRCE5/g9f4e13LiePaQzez.u",
+        "company_name": "Optimaxx Solutions",
+        "company_email": "hivett0@optimaxx.com",
         "image":"http://dummyimage.com/224x100.png/cc0000/ffffff",
         "role":"Estimator",
         "skill": [],
@@ -29,11 +30,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f1b"},
         "first_name":"Giffard",
         "last_name":"Wadlow",
         "username":"gwadlow1",
         "password":"$2a$04$mKnDJzvc.2MwLKYktjlomOiZtoHcn2QqdXc1qHh6t8l7gSwUoezlW",
+        "company_name": "Optimaxx Solutions",
+        "company_email": "gwadlow1@optimaxx.com",
         "image":"http://dummyimage.com/127x100.png/5fa2dd/ffffff",
         "role":"Engineer",
         "skill": [],
@@ -136,11 +138,12 @@
         ]
     },
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f1c"},
         "first_name":"Clementina",
         "last_name":"Troy",
         "username":"ctroy2",
         "password":"$2a$04$vD mscvYpQ5WjfCKILwgnvOO.UPt2rI2oyw1aSA41tYpqMKT8QNIO.",
+        "company_name": "Optimaxx Solutions",
+        "company_email": "ctroy2@optimaxx.com",
         "image":"http://dummyimage.com/197x100.png/cc0000/ffffff",
         "role":"Project Manager",
         "skill": [],
@@ -255,11 +258,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f1d"},
         "first_name":"Marrilee",
         "last_name":"Lagadu",
         "username":"mlagadu3",
-        "password":"$2a$04$42O/SCzTPqA5F6ZjNDf29OtFIhlnKwviV6NpAOsD.0GEn1lSYnZQW",
+        "password":"$2a$04$2eQxacN/VCdC9P.oiKYbfemDX.FTKUTsJtHDnVQcIUZQ6UiqSfz1.",
+        "company_name":"Titan Constructions",
+        "company_email":" mlagadu@titanconstructs.com",
         "image":"http://dummyimage.com/243x100.png/dddddd/000000",
         "role":"Construction Expeditor",
         "skill": [],
@@ -397,11 +401,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f1e"},
         "first_name":"Filberto",
         "last_name":"Kuhnke",
         "username":"fkuhnke4",
         "password":"$2a$04$7IKV21IG1DIhiPSYNTCBgeCxNamLd3mXjn7MUhYCtZ/TCNRIka8zW",
+        "company_name":"Apex Project Solutions",
+        "company_email":"fkuhnke@apexsolutions.com",
         "image":"http://dummyimage.com/229x100.png/ff4444/ffffff",
         "role":"Project Manager",
         "skill": [],
@@ -421,6 +426,17 @@
                 "status":"Rejected",
                 "completion_date": "TBD",
                 "resources_used": "90%",  
+                "estimated_time": "3 hours",
+                "actual_time": "3 hours"
+            },
+            {
+                "task_name":"Designing the proposed design",
+                "due_date":"12/13/2023",
+                "due_time": "15:30",
+                "priority":"High",
+                "status":"New",
+                "completion_date": "TBD",
+                "resources_used": "0%",  
                 "estimated_time": "3 hours",
                 "actual_time": "3 hours"
             },
@@ -505,11 +521,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f1f"},
         "first_name":"Kimball",
         "last_name":"Bullene",
         "username":"kbullene5",
         "password":"$2a$04$nMDUCAWlMN/1Jk.kxcYwaewTCIdvVtdg4TXx7aoYAK6vuwMVeqCxa",
+        "company_name":"GreenTech Corp",
+        "company_email":"kbullene5@greentechcorp.com",
         "image":"http://dummyimage.com/225x100.png/dddddd/000000",
         "role":"Architect",
         "skill": [],
@@ -591,11 +608,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f20"},
         "first_name":"Babs",
         "last_name":"Kleeborn",
         "username":"bkleeborn6",
         "password":"$2a$04$x0wTeDg5R5jcibbrL16/v.P3e/17uWWdwlY5GtS7F.yWzAMYNWp4.",
+        "company_name":"Apex Innovations",
+        "company_email":"bkleeborn6@apexinnovations.com",
         "image":"http://dummyimage.com/249x100.png/dddddd/000000",
         "role":"Supervisor",
         "skill": [],
@@ -633,11 +651,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f21"},
         "first_name":"Shoshanna",
         "last_name":"Antonias",
         "username":"santonias7",
         "password":"$2a$04$2eQxacN/VCdC9P.oiKYbfemDX.FTKUTsJtHDnVQcIUZQ6UiqSfz1.",
+        "company_name":" Horizon Builders",
+        "company_email":"santonias7@horizonbuilders.com",
         "image":"http://dummyimage.com/167x100.png/5fa2dd/ffffff",
         "role":"Engineer",
         "skill": [],
@@ -664,11 +683,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f22"},
         "first_name":"Elfrida",
         "last_name":"Croy",
         "username":"ecroy8",
         "password":"$2a$04$rxbuOwnJ7stwiBKgq2De2eIb9baWQYDMWPL9/JhJe/NucvVbvB5Aq",
+        "company_name":"Blue Sky Solutions",
+        "company_email":"ecroy8@blueskysolutions.com",
         "image":"http://dummyimage.com/158x100.png/ff4444/ffffff",
         "role":"Subcontractor",
         "skill": [],
@@ -706,11 +726,12 @@
     },
 
     {
-        "_id":{"$oid":"66d5a483fc13ae66b4e25f23"},
         "first_name":"Emmie",
         "last_name":"Plume",
         "username":"eplume9",
         "password":"$2a$04$tOERRHjfxo0A06CuUxZQeekUL0xKlWf7FQPaSfrekFX0SL2gTQn6K",
+        "company_name":"Quantum Technologies",
+        "company_email":"eplume9@quantumtech.com",
         "image":"http://dummyimage.com/206x100.png/5fa2dd/ffffff",
         "role":"Construction Expeditor",
         "skill": [],

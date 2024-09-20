@@ -1678,6 +1678,17 @@
                     "actual_time": "3 hours"
                 },
                 {
+                    "task_name":"Designing the proposed design",
+                    "due_date":"12/13/2023",
+                    "due_time": "15:30",
+                    "priority":"High",
+                    "status":"New",
+                    "completion_date": "TBD",
+                    "resources_used": "0%",  
+                    "estimated_time": "3 hours",
+                    "actual_time": "3 hours"
+                },
+                {
                     "task_name":"Delivering the product to close-by customers",
                     "due_date":"8/22/2024",
                     "due_time": "17:30",

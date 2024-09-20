@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import background from '../assets/useraccessBackground.jpg';
 import logo from '/logo.webp';
-import { calculateResourceUtilizationRate, calculateTaskCompletionRate, calculateTaskEfficiency, calculateTaskOverdueRate } from '../helper';
+import { calculateResourceUtilizationRate, calculateTaskCompletionRate, calculateTaskEfficiency } from '../helper';
 
 const UserAccess = () => {
     const { login, setUser, setKPI } = useAuth();
@@ -37,7 +37,7 @@ const UserAccess = () => {
                     const taskCompletionRate = calculateTaskCompletionRate(user.tasks);
                     const resourceUtilizationRate = calculateResourceUtilizationRate(user.tasks);
                     const taskEfficiency = calculateTaskEfficiency(user.tasks);
-                    const taskOverdueRate = calculateTaskOverdueRate(user.tasks);
+                    const taskOverdueRate = 100 - taskEfficiency;
                   
                     const userRating = Math.round(
                                             ( taskCompletionRate * 0.4 ) + 
