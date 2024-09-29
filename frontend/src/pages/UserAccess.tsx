@@ -21,9 +21,7 @@ const UserAccess = () => {
         }
         e.preventDefault();
         try {
-            const response = await axios.get(`https://optiwork.onrender.com/users`, {
-                params: data,
-            });
+            const response = await axios.post(`https://optiwork.onrender.com/users/login`, data)
 
             const user = response.data.find(
                 (user: any) =>

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../Models/User');
 const Task = require('../Models/Task');
+const bcryptjs = require('bcryptjs');
 
 // Get all users
 router.get('/', async (req, res) => {
@@ -26,6 +27,31 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.post('/auth/login', async (req, res) => {
+  try {
+      const { username, password } = req.body;
+      const user = await User.findOne({ username }).select('+password');
+      
+      if (!user) {
+          return res.json({ success: false, message: 'Invalid username or password' });
+      }
+
+      const isMatch = await bcryptjs.compare(password, user.password);
+
+      if (!isMatch) {
+          return res.json({ success: false, message: 'Invalid username or password' });
+      }
+
+      // Don't send the password back to the client
+      const userResponse = user.toObject();
+      delete userResponse.password;
+
+      res.json({ success: true, user: userResponse });
+  } catch (error) {
+      console.error('Login error:', error);
+      res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
 
 // Create multiple users with tasks
 router.post('/', async (req, res) => {
