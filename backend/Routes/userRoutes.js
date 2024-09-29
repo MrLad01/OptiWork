@@ -33,7 +33,7 @@ router.post('/auth/login', async (req, res) => {
       const user = await User.findOne({ username });
       
       if (!user) {
-          return res.json({ success: false, message: 'Invalid username or password' });
+          return res.json({ success: false, message: 'Invalid username does not exists' });
       }
 
       const isMatch = await bcryptjs.compare(password, user.password);
