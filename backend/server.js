@@ -20,10 +20,12 @@ mongoose.connect(process.env.MONGODB_URI)
 
 // Routes
 const taskRoutes = require('./Routes/taskRoutes');
+const taskStatusChange = require('./Routes/taskStatusChange');
 const userRoutes = require('./Routes/userRoutes');
 const materialRoutes = require('./Routes/materialRoutes');
 
 app.use('/api/tasks', taskRoutes);
+app.use('/api/tasksUpdate', taskStatusChange);
 app.use('/api/users', userRoutes);
 app.use('/api/materials', materialRoutes);
 

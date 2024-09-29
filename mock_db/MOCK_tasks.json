@@ -9,6 +9,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1a"},
             "resources": [
                 {
@@ -29,6 +30,7 @@
             "due_time": "16:00",
             "priority":"Low",
             "status":"Rejected",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f23"},
             "resources": [
                 {
@@ -49,6 +51,7 @@
             "due_time": "12:00",
             "priority":"Low",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f23"},
             "resources": [
                 {
@@ -79,6 +82,7 @@
             "due_time": "08:00",
             "priority":"Medium",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f21"},
             "resources": [
                 {
@@ -109,6 +113,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f22"},
             "resources": [
                 {
@@ -139,6 +144,7 @@
             "due_time": "08:00",
             "priority":"Medium",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f22"},
             "resources": [
                 {
@@ -169,6 +175,7 @@
             "due_time": "16:00",
             "priority":"High",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f20"},
             "resources": [
                 {
@@ -189,6 +196,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f20"},
             "resources": [
                 {
@@ -209,6 +217,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
             "resources": [
                 {
@@ -234,6 +243,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
             "resources": [
                 {
@@ -259,6 +269,7 @@
             "due_time": "12:00",
             "priority":"Low",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
             "resources": [
                 {
@@ -277,13 +288,14 @@
 
         {
             "id" : { "$oid":"66d5a6a9fc13ae676ae25f0f"},
-            "task_number": "100001",
+            "task_number": "100011",
             "task_name":"Cutting out the design",
             "description":"Cut out the proposed design and ready for assemblying",
             "due_date":"8/5/2024",
             "due_time": "20:00",
             "priority":"Medium",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -309,6 +321,7 @@
             "due_time": "20:00",
             "priority":"Medium",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -334,6 +347,7 @@
             "due_time": "12:00",
             "priority":"Low",
             "status":"Pending",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -359,6 +373,7 @@
             "due_time": "08:00",
             "priority":"Low",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -384,6 +399,7 @@
             "due_time": "08:00",
             "priority":"Medium",
             "status":"New",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -410,6 +426,7 @@
             "due_time": "20:00",
             "priority":"High",
             "status":"Pending",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -435,6 +452,7 @@
             "due_time": "08:00",
             "priority":"High",
             "status":"Rejected",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -460,6 +478,7 @@
             "due_time": "16:00",
             "priority":"High",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user": {"$oid":"66d5a483fc13ae66b4e25f1b"},
             "resources": [
                 {
@@ -485,6 +504,7 @@
             "due_time": "16:00",
             "priority":"Medium",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -510,6 +530,7 @@
             "due_time": "14:30",
             "priority":"Low",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -535,6 +556,7 @@
             "due_time": "16:00",
             "priority":"Medium",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -560,6 +582,7 @@
             "due_time": "17:30",
             "priority":"Medium",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -585,6 +608,7 @@
             "due_time": "12:00",
             "priority":"Medium",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -610,6 +634,7 @@
             "due_time": "14:30",
             "priority":"High",
             "status":"Rejected",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -635,6 +660,7 @@
             "due_time": "08:00",
             "priority":"Medium",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -660,6 +686,7 @@
             "due_time": "16:00",
             "priority":"High",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -685,6 +712,7 @@
             "due_time": "14:30",
             "priority":"Low",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1c"},
             "resources": [
                 {
@@ -710,6 +738,7 @@
             "due_time": "17:30",
             "priority":"High",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -735,6 +764,7 @@
             "due_time": "12:00",
             "priority":"Low",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -760,6 +790,7 @@
             "due_time": "14:30",
             "priority":"High",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -785,6 +816,7 @@
             "due_time": "16:00",
             "priority":"High",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -810,6 +842,7 @@
             "due_time": "12:00",
             "priority":"Medium",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -835,6 +868,7 @@
             "due_time": "08:00",
             "priority":"High",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -860,6 +894,7 @@
             "due_time": "14:30",
             "priority":"High",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -885,6 +920,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -910,6 +946,7 @@
             "due_time": "08:00",
             "priority":"Medium",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -935,6 +972,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -960,6 +998,7 @@
             "due_time": "08:00",
             "priority":"High",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1d"},
             "resources": [
                 {
@@ -985,6 +1024,7 @@
             "due_time": "14:30",
             "priority":"Medium",
             "status":"Rejected",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1010,6 +1050,7 @@
             "due_time": "17:30",
             "priority":"Low",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1035,6 +1076,7 @@
             "due_time": "12:00",
             "priority":"Low",
             "status":"New",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1060,6 +1102,7 @@
             "due_time": "08:00",
             "priority":"Low",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1085,6 +1128,7 @@
             "due_time": "12:00",
             "priority":"High",
             "status":"Rejected",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1110,6 +1154,7 @@
             "due_time": "17:30",
             "priority":"Low",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1135,6 +1180,7 @@
             "due_time": "08:00",
             "priority":"Low",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1160,6 +1206,7 @@
             "due_time": "20:00",
             "priority":"Medium",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1e"},
             "resources": [
                 {
@@ -1185,6 +1232,7 @@
             "due_time": "20:00",
             "priority":"High",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
             "resources": [
                 {
@@ -1210,6 +1258,7 @@
             "due_time": "20:00",
             "priority":"Medium",
             "status":"In-Progress",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
             "resources": [
                 {
@@ -1235,6 +1284,7 @@
             "due_time": "12:00",
             "priority":"Low",
             "status":"Completed",
+            "actual_time":3,
             "assigned_user":{"$oid":"66d5a483fc13ae66b4e25f1f"},
             "resources": [
                 {
