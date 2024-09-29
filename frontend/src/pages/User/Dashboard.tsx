@@ -29,7 +29,7 @@ export const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    axios.get('https://optiwork.onrender.com/tasks')
+    axios.get('https://optiwork.onrender.com/api/tasks')
       .then(response => {
         const sortedTasks = response.data.sort((a: any, b: any) => {
           const [monthA, dayA, yearA] = a.due_date.split('/').map(Number);

@@ -63,21 +63,22 @@ export const formatDate = (date: Date) => {
     }
   };
 
-function percentageToNumber(percentageString: string): number {
-    // Remove any whitespace and the '%' symbol if present
-    const cleanedString = percentageString.trim().replace('%', '');
-    
-    // Parse the string to a float
-    const number = parseFloat(cleanedString);
-    
-    // Check if the result is a valid number
-    if (isNaN(number)) {
-        throw new Error('Invalid percentage string');
-    }
-    
-    // Convert percentage to decimal (e.g., 50% becomes 0.5)
-    return number;
-}
+// Ensure that the input is a valid string before calling .trim()
+export const percentageToNumber = (percentage: string | undefined | null): number => {
+  if (typeof percentage !== 'string' || !percentage) {
+    console.error('Invalid input to percentageToNumber:', percentage);
+    return 0; // Return a default value if the input is invalid
+  }
+
+  // Assuming percentage is in a string format like '50%'
+  const trimmedPercentage = percentage.trim().replace('%', '');
+
+  // Convert the percentage to a number
+  const numberValue = parseFloat(trimmedPercentage);
+
+  return isNaN(numberValue) ? 0 : numberValue; // Handle NaN
+};
+
 
 function hourToNumber(percentageString: string): number {
     // Remove any whitespace and the '%' symbol if present

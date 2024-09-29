@@ -29,7 +29,7 @@ export const UserTask = () => {
   }, [location]);
 
   useEffect(() => {
-    axios.get('https://optiwork.onrender.com/tasks')
+    axios.get('https://optiwork.onrender.com/api/tasks')
       .then(response => {
         const sortedTasks = response.data.sort((a: any, b: any) => {
           const [monthA, dayA, yearA] = a.due_date.split('/').map(Number);
@@ -157,7 +157,7 @@ export const UserTask = () => {
               <div className="border h-[90%] w-full flex">
                 <ApexChart tasks={usersTasks} />
               </div>
-              <div className="font-medium">Tasks close to deadline: {tasksCloseToDeadline}</div>            </div>
+              <div className="font-medium">Tasks close to deadline: {tasksCloseToDeadline}</div> </div>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ export const NewUserTasks = () => {
 
 
   useEffect(() => {
-    axios.get('https://optiwork.onrender.com/tasks')
+    axios.get('https://optiwork.onrender.com/api/tasks')
       .then(response => { 
         setTasks(response.data);
         setLoading(false);
@@ -51,7 +51,7 @@ export const NewUserTasks = () => {
   };
 
   const updateTaskStatus = (taskId: string, newStatus: string) => {
-    axios.patch(`https://optiwork.onrender.com/tasks/${taskId}`, { status: newStatus })
+    axios.patch(`https://optiwork.onrender.com/api/tasks/${taskId}`, { status: newStatus })
       .then(response => {
         setTasks(tasks.map(task => task.id === taskId ? { ...task, status: newStatus } : task));
       })

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { KPI, useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import background from '../assets/useraccessBackground.jpg';
 import logo from '/logo.webp';
 import { calculateResourceUtilizationRate, calculateTaskCompletionRate, calculateTaskEfficiency } from '../helper';
@@ -21,17 +21,14 @@ const UserAccess = () => {
         }
         e.preventDefault();
         try {
-            const response = await axios.post(`https://optiwork.onrender.com/users/login`, data)
-
-            const user = response.data.find(
-                (user: any) =>
-                    user.username === credentials.username && user.password === credentials.password
-            );
-
-            if (user) {
+            const response = await axios.post(`https://optiwork.onrender.com/api/users/auth/login`, data)
+            console.log(response);
+            
+            if (response.data.success) {
+                const user = response.data.user;
                 login(data);
                 setUser(user);
-                if (user.tasks.length !== null){                    
+                if (user.tasks && user.tasks.length > 0){                    
                     const taskCompletionRate = calculateTaskCompletionRate(user.tasks);
                     const resourceUtilizationRate = calculateResourceUtilizationRate(user.tasks);
                     const taskEfficiency = calculateTaskEfficiency(user.tasks);
@@ -57,11 +54,19 @@ const UserAccess = () => {
                 }
                 navigate('/user/dashboard');
             } else {
-                setError('Invalid username or password');
+                setError(response.data.message || 'Invalid username or password');
             }
         } catch (err) {
             console.error(err);
-            setError('Failed to log in. Please try again.');
+            const error = err as AxiosError;
+            // Handle different types of errors
+            if (error.response && error.response.data) {
+                // Explicitly check if message exists in response data
+                const errorMessage = (error.response.data as { message: string }).message;
+                setError(errorMessage || 'Failed to log in. Please try again.');
+            } else {
+                setError('Server error. Please try again later.');
+            }
         }
     };
 

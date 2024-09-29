@@ -32,7 +32,7 @@ router.post('/auth/login', async (req, res) => {
       const { username, password } = req.body;
     
       // Check if the user exists in the database
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username }).populate('tasks');
 
       if (!user) {
         console.log('User not found with username:', username);
