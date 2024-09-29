@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
 router.post('/auth/login', async (req, res) => {
   try {
       const { username, password } = req.body;
-      const user = await User.findOne({ username }).select('+password');
+      const user = await User.findOne({ username });
       
       if (!user) {
           return res.json({ success: false, message: 'Invalid username or password' });
