@@ -21,7 +21,7 @@ const UserAccess = () => {
         }
         e.preventDefault();
         try {
-            const response = await axios.get(`http://localhost:3001/users`, {
+            const response = await axios.get(`https://optiwork.onrender.com/users`, {
                 params: data,
             });
 

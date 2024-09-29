@@ -23,7 +23,7 @@ export const PendingUserTasks = () => {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:3001/tasks')
+    axios.get('https://optiwork.onrender.com/tasks')
       .then(response => { 
         setTasks(response.data);
         setLoading(false);

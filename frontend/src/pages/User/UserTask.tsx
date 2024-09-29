@@ -29,7 +29,7 @@ export const UserTask = () => {
   }, [location]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/tasks')
+    axios.get('https://optiwork.onrender.com/tasks')
       .then(response => {
         const sortedTasks = response.data.sort((a: any, b: any) => {
           const [monthA, dayA, yearA] = a.due_date.split('/').map(Number);

@@ -20,7 +20,7 @@ export const ProgressUserTasks = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:3001/tasks')
+    axios.get('https://optiwork.onrender.com/tasks')
       .then(response => { 
         setTasks(response.data);
         setLoading(false);
@@ -49,7 +49,7 @@ export const ProgressUserTasks = () => {
   };
 
   const updateTaskStatus = (taskId: string, newStatus: string) => {
-    axios.patch(`http://localhost:3001/tasks/${taskId}`, { status: newStatus })
+    axios.patch(`https://optiwork.onrender.com/tasks/${taskId}`, { status: newStatus })
       .then(response => {
         setTasks(tasks.map(task => task.id === taskId ? { ...task, status: newStatus } : task));
       })
