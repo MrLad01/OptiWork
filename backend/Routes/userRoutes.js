@@ -30,10 +30,13 @@ router.get('/:id', async (req, res) => {
 router.post('/auth/login', async (req, res) => {
   try {
       const { username, password } = req.body;
+    
+      // Check if the user exists in the database
       const user = await User.findOne({ username });
-      
+
       if (!user) {
-          return res.json({ success: false, message: 'Invalid username does not exists' });
+        console.log('User not found with username:', username);
+        return res.status(400).json({ success: false, message: 'Invalid username' });
       }
 
       const isMatch = await bcryptjs.compare(password, user.password);
