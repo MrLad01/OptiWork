@@ -27,6 +27,41 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Endpoint to check for admins in each company
+router.get('/check-admins', async (req, res) => {
+  try {
+    // Aggregate users by company_name and check for admins
+    const companies = await User.aggregate([
+      {
+        $group: {
+          _id: '$company_name',
+          admins: { $push: { $cond: [{ $eq: ['$role', 'Admin'] }, '$username', null] } }
+        }
+      }
+    ]);
+
+    // Filter out companies without admins
+    const companiesWithoutAdmins = companies.filter(company => 
+      !company.admins.some(admin => admin !== null)
+    );
+
+    if (companiesWithoutAdmins.length > 0) {
+      return res.status(200).json({
+        message: 'The following companies do not have an admin:',
+        companies: companiesWithoutAdmins.map(company => company._id)
+      });
+    } else {
+      return res.status(200).json({
+        message: 'All companies have at least one admin.'
+      });
+    }
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'An error occurred while checking for admins.' });
+  }
+});
+
 router.post('/auth/login', async (req, res) => {
   try {
       const { username, password } = req.body;
