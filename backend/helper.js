@@ -1,3 +1,5 @@
+const User = require('./Models/User');  // Adjust the path as necessary
+
 // Keywords mapped to roles
 const keywordRoleMapping = {
     'build': ['Builder', 'Bricklayer'],
@@ -28,7 +30,7 @@ const keywordRoleMapping = {
   };
   
   // Function to assign users based on extracted keywords
- export const assignUserBasedOnKeywords = async (taskDescription) => {
+async function assignUserBasedOnKeywords(taskDescription) {
     const extractedKeywords = extractKeywords(taskDescription);
     let assignedUser = null;
   
@@ -45,3 +47,6 @@ const keywordRoleMapping = {
     return assignedUser;
   };
   
+module.exports = {
+    assignUserBasedOnKeywords
+};
