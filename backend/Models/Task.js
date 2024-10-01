@@ -31,7 +31,7 @@ const taskSchema = new mongoose.Schema({
   resources: [{
     material: { type: mongoose.Schema.Types.ObjectId, ref: 'Material' }, 
     quantity: { type: Number, required: true }
-  }],
+  }], required: true,
 
   // Optional task resources used
   resources_used: { type: Array, default: [] }
