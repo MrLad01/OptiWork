@@ -3,8 +3,8 @@ const User = require('./Models/User');  // Adjust the path as necessary
 // Keywords mapped to roles
 const keywordRoleMapping = {
     'build': ['Builder', 'Bricklayer'],
-    'building': ['Builder', 'Construction Worker'],
-    'plumbing': ['Plumber'],
+    'building': ['Builder', 'Construction Worker', 'Construction Expeditor'],
+    'plumbing': ['Plumber', 'Subcontractor'],
     'design': ['Architect', 'Designer'],
     'supervising': ['Project Manager'],
     'assembly': ['Estimator'],
