@@ -28,10 +28,14 @@ const taskSchema = new mongoose.Schema({
   assigned_user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 
   // Resource details
-  resources: [{
-    material: { type: mongoose.Schema.Types.ObjectId, ref: 'Material' }, 
-    quantity: { type: Number, required: true }
-  }], required: true,
+  resources: {
+    type: [{
+      material: { type: mongoose.Schema.Types.ObjectId, ref: 'Material', required: true }, 
+      quantity: { type: Number, required: true }
+    }],
+    required: true,
+    validate: [array => array.length > 0, 'Task must have at least one resource']
+  },
 
   // Optional task resources used
   resources_used: { type: Array, default: [] }
