@@ -30,6 +30,7 @@ mongoose.connect(process.env.MONGODB_URI)
 // Routes
 const taskRoutes = require('./Routes/taskRoutes');
 const taskStatusChange = require('./Routes/taskStatusChange');
+const user2Routes = require('./Routes/freeUserRoute');
 const userRoutes = require('./Routes/userRoutes');
 const materialRoutes = require('./Routes/materialRoutes');
 const { isAuthenticated } = require('./Middlewares/isAuthenticated');
@@ -38,6 +39,7 @@ const filterByCompany = require('./Middlewares/filterByCompany');
 app.use('/api/tasks', isAuthenticated, filterByCompany, taskRoutes);
 app.use('/api/tasksUpdate', isAuthenticated, filterByCompany, taskStatusChange);
 app.use('/api/users', isAuthenticated, filterByCompany, userRoutes);
+app.use('/api/user', user2Routes);
 app.use('/api/materials', isAuthenticated, materialRoutes);
 
 // Start the server
