@@ -1,6 +1,6 @@
 [
     {
-        "material_name":"Rev",
+        "material_name":"Wendell Wood",
         "quantity":264,
         "unit_price":684.01,
         "supplier_name":"Zoombeat",
@@ -12,7 +12,7 @@
         "weight":83.6
     },
     {
-        "material_name":"Rev",
+        "material_name":"Fibre Glass",
         "quantity":458,
         "unit_price":859.11,
         "supplier_name":"Vidoo",
@@ -24,7 +24,7 @@
         "weight":20.5
     },
     {
-        "material_name":"Mr",
+        "material_name":"Nylon",
         "quantity":495,
         "unit_price":6.82,
         "supplier_name":"Dynazzy",
@@ -36,7 +36,7 @@
         "weight":0.9
     },
     {
-        "material_name":"Honorable",
+        "material_name":"clay",
         "quantity":905,
         "unit_price":92.78,
         "supplier_name":"Dabshots",
@@ -44,11 +44,11 @@
         "purchase_date":"10/30/2022",
         "expiration_date":"12/25/2023",
         "storage_location":"Apt 598",
-        "material_type":"plastic",
+        "material_type":"sand",
         "weight":68.4
     },
     {
-        "material_name":"Rev",
+        "material_name":"aluminium rolls",
         "quantity":683,
         "unit_price":265.67,
         "supplier_name":"Plajo",
@@ -60,7 +60,7 @@
         "weight":66.2
     },
     {
-        "material_name":"Honorable",
+        "material_name":"steel rods",
         "quantity":39,
         "unit_price":196.29,
         "supplier_name":"Dabtype",
@@ -72,7 +72,7 @@
         "weight":81.1
     },
     {
-        "material_name":"Mr",
+        "material_name":"cement",
         "quantity":189,
         "unit_price":784.28,
         "supplier_name":"Kamba",
@@ -80,11 +80,11 @@
         "purchase_date":"7/29/2021",
         "expiration_date":"8/23/2023",
         "storage_location":"Suite 49",
-        "material_type":"glass",
+        "material_type":"sand",
         "weight":85.5
     },
     {
-        "material_name":"Dr",
+        "material_name":"A1 paper",
         "quantity":225,
         "unit_price":481.88,
         "supplier_name":"Browseblab",
@@ -92,23 +92,23 @@
         "purchase_date":"12/28/2020",
         "expiration_date":"8/31/2023",
         "storage_location":"12th Floor",
-        "material_type":"metal",
+        "material_type":"paper",
         "weight":91.4
     },
     {
-        "material_name":"Dr",
-        "quantity":939,
+        "material_name":"Scissor",
+        "quantity":33,
         "unit_price":794.42,
         "supplier_name":"Livefish",
         "supplier_contact":"312-447-5557",
         "purchase_date":"4/26/2020",
         "expiration_date":"8/27/2024",
         "storage_location":"Suite 29",
-        "material_type":"wood",
+        "material_type":"scissor",
         "weight":68.3
     },
     {
-        "material_name":"Ms",
+        "material_name":"Threads",
         "quantity":523,
         "unit_price":481.95,
         "supplier_name":"Meeveo",
@@ -116,7 +116,19 @@
         "purchase_date":"9/4/2021",
         "expiration_date":"3/1/2025",
         "storage_location":"Suite 28",
-        "material_type":"wood",
+        "material_type":"Threads",
+        "weight":15.8
+    },
+    {
+        "material_name":"Needles",
+        "quantity":523,
+        "unit_price":481.95,
+        "supplier_name":"Meeveo",
+        "supplier_contact":"298-200-1001",
+        "purchase_date":"9/4/2021",
+        "expiration_date":"3/1/2025",
+        "storage_location":"Suite 28",
+        "material_type":"Needles",
         "weight":15.8
     }
 ]

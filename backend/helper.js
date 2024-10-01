@@ -4,7 +4,7 @@ export const keywordRoleMapping = {
     'building': ['Builder', 'Construction Worker'],
     'plumbing': ['Plumber'],
     'design': ['Architect', 'Designer'],
-    'supervising the technicians on the third base': ['Project Manager'],
+    'supervising': ['Project Manager'],
     'assembly': ['Estimator'],
     'sewing': ['Project Manager'],
     'cutting': ['Engineer', 'Project Manager'],
