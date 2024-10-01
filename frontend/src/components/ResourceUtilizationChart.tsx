@@ -10,8 +10,8 @@ interface Task {
   priority: string;
   completion_date: string;
   resources_used: string;  
-  estimated_time: string;
-  actual_time: string;
+  estimated_time: number;
+  actual_time: number;
 }
 
 interface User {
@@ -29,8 +29,8 @@ const ResourceUtilizationChart:React.FC<UtilizationProps> = ({ user }) => {
         return user.tasks.map(task => ({
             x: task.task_name,
             y: !isNaN(parseFloat(task.resources_used)) ? parseFloat(task.resources_used) : 0, 
-            z: !isNaN(parseFloat(task.actual_time)) ? parseFloat(task.actual_time) : 0,       
-            estimatedTime: !isNaN(parseFloat(task.estimated_time)) ? parseFloat(task.estimated_time) : 0 
+            z: !isNaN(task.actual_time) ? task.actual_time : 0,       
+            estimatedTime: !isNaN(task.estimated_time) ? task.estimated_time : 0 
         }));
         }, [user.tasks]);
       

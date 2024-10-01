@@ -4,8 +4,8 @@ import { ApexOptions } from 'apexcharts';
 
 interface Task {
   task_name: string;
-  estimated_time: string;
-  actual_time: string;
+  estimated_time: number;
+  actual_time: number;
 }
 
 interface User {
@@ -40,8 +40,8 @@ const TimeComparisonChart: React.FC<ComparisonProps> = ({ user }) => {
       };
 
       user.tasks.forEach((task) => {
-        const estimatedHours = parseFloat(task.estimated_time.split(' ')[0]);
-        const actualHours = parseFloat(task.actual_time.split(' ')[0]);
+        const estimatedHours = task.estimated_time;
+        const actualHours = task.actual_time;
 
         processedData.estimatedTime.push(estimatedHours);
         processedData.actualTime.push(actualHours);

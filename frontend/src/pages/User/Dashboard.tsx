@@ -1,9 +1,9 @@
 import { ArrangeHorizontalCircle, Chart, Layer, Task, TickCircle } from "iconsax-react";
 import { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css';
-import { useAuth } from "../../context/AuthContext";
+import { useAuth, UserTask } from "../../context/AuthContext";
 import { formatDate, formatDueDate, formattedNumber, formatTime, generateRatingFeedback, getGreeting, getStatusClass } from "../../helper";
 import UserCharts from "../../components/UserCharts";
 
@@ -15,8 +15,8 @@ export const Dashboard = () => {
   const [tasks, setTasks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const usersTasks = tasks.filter(task => task.assigned_user.$oid === user?._id.$oid);
-  const currentTasks = usersTasks.filter(task => task.status === "In-Progress");
+  // const tasks = tasks.filter(task => task.assigned_user.$oid === user?._id.$oid);
+  const currentTasks = user?.tasks.filter(task => task.status === "In-Progress");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,36 +29,33 @@ export const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    axios.get('https://optiwork.onrender.com/api/tasks')
-      .then(response => {
-        const sortedTasks = response.data.sort((a: any, b: any) => {
-          const [monthA, dayA, yearA] = a.due_date.split('/').map(Number);
-          const [monthB, dayB, yearB] = b.due_date.split('/').map(Number);
-          const dateA = new Date(yearA, monthA - 1, dayA);
-          const dateB = new Date(yearB, monthB - 1, dayB);
-          return dateB.getTime() - dateA.getTime(); // Sort from recent to oldest
-        });
-        setTasks(sortedTasks);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching tasks:', error);
-        setLoading(false);
+    if (user?.tasks && user.tasks.length > 0) {
+      const sortedTasks = user.tasks.sort((a: UserTask, b: UserTask) => {
+        const [monthA, dayA, yearA] = a.due_date.split('/').map(Number);
+        const [monthB, dayB, yearB] = b.due_date.split('/').map(Number);
+        const dateA = new Date(yearA, monthA - 1, dayA);
+        const dateB = new Date(yearB, monthB - 1, dayB);
+        
+        return dateB.getTime() - dateA.getTime(); // Return the comparison result for sorting
       });
-  }, []);
+  
+      setTasks(sortedTasks);  // Set the sorted tasks after sorting
+      setLoading(false);      // Set loading to false once tasks are set
+    }
+  }, [user]);
 
 
 
-  const inProgressTasks = usersTasks.filter(task => task.status === 'In-Progress');
+  const inProgressTasks = tasks.filter(task => task.status === 'In-Progress');
   const inProgressResourcesCount = inProgressTasks.filter(task => task.resources).length;
-  const newTasks = usersTasks.filter(task => task.status === 'New');
+  const newTasks = tasks.filter(task => task.status === 'New');
   const newTasksResourcesCount = newTasks.filter(task => task.resources).length;
   const resourceCount = inProgressResourcesCount + newTasksResourcesCount;
-  const newTasksCount = usersTasks.filter(task => task.status === 'New').length;
-  const pendingTasksCount = usersTasks.filter(task => task.status === 'Pending').length;
-  const inprogressTasksCount = usersTasks.filter(task => task.status === 'In-Progress').length;
+  const newTasksCount = tasks.filter(task => task.status === 'New').length;
+  const pendingTasksCount = tasks.filter(task => task.status === 'Pending').length;
+  const inprogressTasksCount = tasks.filter(task => task.status === 'In-Progress').length;
   const activeTasksCount = newTasksCount + pendingTasksCount + inprogressTasksCount;
-  const completedTasksCount = usersTasks.filter(task => task.status === 'Completed').length;
+  const completedTasksCount = tasks.filter(task => task.status === 'Completed').length;
 
   return (
     <div className="w-full h-[89vh] bg-slate-200 rounded-s-2xl px-5 py-4">
@@ -129,11 +126,11 @@ export const Dashboard = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {usersTasks.slice(0, 20).map((task) => (
+                      {tasks.slice(0, 20).map((task) => (
                         <tr key={task.task_number}>
                           <td className="border px-4 py-2">{task.task_name}</td>
                           <td className={`${getStatusClass(task.status)} font-medium border px-4 py-2`}>{task.status === 'Blocked' ? 'Rejected' : task.status}</td>
-                          <td className="border px-4 py-2">{formatDueDate(task.due_date)}</td>
+                          <td className="border px-4 py-2">{formatDate(task.due_date)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -163,7 +160,7 @@ export const Dashboard = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        { currentTasks.slice(0, 5).map((task) => (
+                        { currentTasks && currentTasks.slice(0, 5).map((task) => (
                           <tr key={task.task_number}>
                             <td className="border px-4 py-2">{task.task_name}</td>
                             <td className={`${getStatusClass(task.status)} font-medium border px-4 py-2`}>{task.status}</td>

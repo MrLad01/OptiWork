@@ -9,7 +9,9 @@ interface UserNotification {
     time: string; // Format: "HH:MM"
   }
 
-  interface UserTask {
+ export interface UserTask {
+      _id:string;
+      task_number:number;
       task_name: string;
       due_date: string;
       due_time: string;
@@ -17,8 +19,8 @@ interface UserNotification {
       status: string;
       completion_date: string;
       resources_used: string;  
-      estimated_time: string;
-      actual_time: string;
+      estimated_time: number;
+      actual_time: number;
     }
   
   interface User {

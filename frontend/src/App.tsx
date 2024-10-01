@@ -3,7 +3,7 @@ import Welcome from "./pages/Welcome"
 import UserAccess from "./pages/UserAccess"
 import { UserLayout } from "./layout/User/UserLayout"
 import { Dashboard } from "./pages/User/Dashboard"
-import { UserTask } from "./pages/User/UserTask"
+import {  UserTask1 } from "./pages/User/UserTask"
 // import { UserReport } from "./pages/User/UserReport"
 import { UserSetting } from "./pages/User/UserSetting"
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -19,6 +19,11 @@ import { CompletedUserTasks } from "./pages/User/Tasks/CompletedUserTasks"
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from "./context/PrivateRoute"
 import UserReport from "./pages/User/UserReport"
+import { AdminLayout } from "./layout/Admin/AdminLayout"
+import { Addashboard } from "./pages/Admin/Addashboard"
+import { AdminProject } from "./pages/Admin/AdminProject"
+import { AdminReport } from "./pages/Admin/AdminReport"
+import { AdminSetting } from "./pages/Admin/AdminSetting"
 
 library.add(fas, fab, far);
 
@@ -48,7 +53,7 @@ const router = createBrowserRouter(
             />
             <Route 
               path="task"
-              element={<UserTask />} 
+              element={<UserTask1 />} 
             >
              <Route 
               index
@@ -86,13 +91,29 @@ const router = createBrowserRouter(
           </Route>
           <Route 
             path="admin"
-            element={<UserAccess />} 
+            element={
+              <PrivateRoute>
+                <AdminLayout />
+              </PrivateRoute>
+            } 
           >
             <Route 
               path="dashboard"
-              element={<UserAccess />} 
+              element={<Addashboard />} 
             >
             </Route>
+            <Route 
+              path="project"
+              element={<AdminProject />} 
+            />
+            <Route 
+              path="report"
+              element={<AdminReport />} 
+            />
+            <Route 
+              path="settings"
+              element={<AdminSetting />} 
+            />        
           </Route>
         </Route>
       )

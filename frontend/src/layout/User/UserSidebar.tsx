@@ -37,7 +37,7 @@ export const UserSidebar: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <h3 className="font-semibold text-sm">{user?.company_name || 'Company Name' }</h3>
-            <h4 className="text-sm">{user?.company_email || 'Company Email' }</h4>
+            <h4 className="text-sm max-w-40 break-words">{user?.company_email || 'Company Email' }</h4>
           </div>
         </div>
         <div className="flex flex-col gap-1 mt-5">

@@ -1,32 +1,26 @@
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
-import { useAuth } from "../../../context/AuthContext";
+import { useAuth, UserTask } from "../../../context/AuthContext";
 import { Menu } from '@headlessui/react';
 import TaskDetailsModal from "../../../components/TaskDetailsModalProps";
+import { formatDate } from "../../../helper";
 
 export const CompletedUserTasks = () => {
 
   const { user } = useAuth();
 
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<UserTask[] | undefined>([]);
   const [loading, setLoading] = useState(true);
   const [selectedTask, setSelectedTask] = useState<any>(null);
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
 
-  const usersTasks = tasks.filter(task => task.assigned_user.$oid === user?._id.$oid);
+  // const usersTasks = tasks.filter(task => task.assigned_user.$oid === user?._id.$oid);
 
 
   useEffect(() => {
-    axios.get('https://optiwork.onrender.com/api/tasks')
-      .then(response => { 
-        setTasks(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching tasks:', error);
-        setLoading(false);
-      });
+      setTasks(user?.tasks);
+      setLoading(false);
   }, []);
 
   const handleViewDetails = (task: any) => {
@@ -73,13 +67,13 @@ export const CompletedUserTasks = () => {
             </tr>
           </thead>
           <tbody>
-            {usersTasks.filter(task => task.status === 'Completed').map((task) => (
-              <tr key={task.id}>
+            {tasks && tasks.filter(task => task.status === 'Completed').map((task) => (
+              <tr key={task._id}>
                 <td className="border px-2 py-1">{task.task_number}</td>
                 <td className="border px-2 py-1">{task.task_name}</td>
                 <td className="border px-2 py-1">{task.priority}</td>
                 <td className={`${getStatusClass(task.status)} font-medium border px-4 py-2`}>{task.status}</td>
-                <td className="border px-2 py-1">{task.due_date}</td>
+                <td className="border px-2 py-1">{formatDate(task.due_date)}</td>
                 <td className="border px-2 py-1">{formatTime(task.due_time)}</td>
                 <td className="border px-3 py-1">
                   <Menu as="div" className="relative inline-block text-left">

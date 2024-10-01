@@ -1,14 +1,15 @@
 import { Diagram, Element2, Filter, SearchNormal, Setting2, TaskSquare } from "iconsax-react";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import axios from 'axios';
+// import axios from 'axios';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
-import { useAuth } from "../../context/AuthContext";
+import { useAuth, UserTask } from "../../context/AuthContext";
 import ApexChart from "../../components/ApexCharts";
 import CalendarModal from "../../components/CalendarModal";
+import { formatDate } from "../../helper";
 
-export const UserTask = () => {
+export const UserTask1 = () => {
   const { user } = useAuth();
 
   const [activeTaskMenu, setActiveTaskMenu] = useState<string>('');
@@ -29,30 +30,28 @@ export const UserTask = () => {
   }, [location]);
 
   useEffect(() => {
-    axios.get('https://optiwork.onrender.com/api/tasks')
-      .then(response => {
-        const sortedTasks = response.data.sort((a: any, b: any) => {
-          const [monthA, dayA, yearA] = a.due_date.split('/').map(Number);
-          const [monthB, dayB, yearB] = b.due_date.split('/').map(Number);
-          const dateA = new Date(yearA, monthA - 1, dayA);
-          const dateB = new Date(yearB, monthB - 1, dayB);
-          return dateB.getTime() - dateA.getTime(); // Sort from recent to oldest
-        });
-        setTasks(sortedTasks);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching tasks:', error);
-        setLoading(false);
+    if (user?.tasks && user.tasks.length > 0) {
+      const sortedTasks = user.tasks.sort((a: UserTask, b: UserTask) => {
+        const [monthA, dayA, yearA] = a.due_date.split('/').map(Number);
+        const [monthB, dayB, yearB] = b.due_date.split('/').map(Number);
+        const dateA = new Date(yearA, monthA - 1, dayA);
+        const dateB = new Date(yearB, monthB - 1, dayB);
+        
+        return dateB.getTime() - dateA.getTime(); // Return the comparison result for sorting
       });
-  }, []);
+  
+      setTasks(sortedTasks);  // Set the sorted tasks after sorting
+      setLoading(false);      // Set loading to false once tasks are set
+    }
+  }, [user]);  // Add 'user' as a dependency to re-run effect if user changes
+  
 
   useEffect(() => {
-    const closeToDeadline = usersTasks.filter(task => 
+    const closeToDeadline = tasks.filter(task => 
       task.status === 'New' && isCloseToDeadline(task.due_date)
     ).length;
     setTasksCloseToDeadline(closeToDeadline);
-  }, [usersTasks]);
+  }, [tasks]);
 
   const isCloseToDeadline = (dueDate: string) => {
     const [month, day, year] = dueDate.split('/').map(Number);
@@ -134,11 +133,11 @@ export const UserTask = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {usersTasks.filter(task => task.status === 'New').slice(0, 5).map((task) => (
+                    {tasks.filter(task => task.status === 'New').slice(0, 5).map((task) => (
                       <tr key={task.id}>
                         <td className="border px-2 py-1">{task.task_name}</td>
                         <td className="border px-2 py-1">{task.priority}</td>
-                        <td className="border px-2 py-1">{task.due_date}</td>
+                        <td className="border px-2 py-1">{formatDate(task.due_date)}</td>
                         <td className="border px-2 py-1">{formatTime(task.due_time)}</td>
                       </tr>
                     ))}
@@ -155,7 +154,7 @@ export const UserTask = () => {
             <h2 className="font-semibold">Task Track</h2>
             <div className="h-full flex flex-col p-1 gap-2 items-center justify-evenly text-sm">
               <div className="border h-[90%] w-full flex">
-                <ApexChart tasks={usersTasks} />
+                <ApexChart tasks={tasks} />
               </div>
               <div className="font-medium">Tasks close to deadline: {tasksCloseToDeadline}</div> </div>
           </div>

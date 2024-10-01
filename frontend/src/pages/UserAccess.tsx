@@ -5,6 +5,8 @@ import axios, { AxiosError } from 'axios';
 import background from '../assets/useraccessBackground.jpg';
 import logo from '/logo.webp';
 import { calculateResourceUtilizationRate, calculateTaskCompletionRate, calculateTaskEfficiency } from '../helper';
+import {  PuffLoader } from 'react-spinners';
+// import { set } from 'date-fns';
 
 const UserAccess = () => {
     const { login, setUser, setKPI } = useAuth();
@@ -13,6 +15,7 @@ const UserAccess = () => {
     const [activeInput, setActiveInput] = useState<string>('');
     const [credentials, setCredentials] = useState({ username: '', password: '' });
     const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState<boolean | undefined>(false);
 
     const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const data = {
@@ -20,6 +23,7 @@ const UserAccess = () => {
             password: credentials.password,
         }
         e.preventDefault();
+        setLoading(true);
         try {
             const response = await axios.post(`https://optiwork.onrender.com/api/users/auth/login`, data)
             console.log(response);
@@ -52,7 +56,12 @@ const UserAccess = () => {
                     setKPI(kpi);
 
                 }
-                navigate('/user/dashboard');
+                setLoading(false);
+                if(response.data.user.role === 'Admin'){
+                    navigate('/admin/dashboard');
+                } else {
+                    navigate('/user/dashboard');
+                }
             } else {
                 setError(response.data.message || 'Invalid username or password');
             }
@@ -96,7 +105,11 @@ const UserAccess = () => {
                                 type="text" 
                                 placeholder='Please Enter your Username' 
                                 value={credentials.username}
-                                onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+                                onChange={(e) => {
+                                                    setCredentials({ ...credentials, username: e.target.value });
+                                                    setError(null);
+                                                    setLoading(false);
+                                                }}
                                 className={`${activeInput == 'loginUser' && !error && 'outline outline-2'} ${error && 'border-red-500'} border p-3 rounded-md placeholder-shown:text-sm`} 
                                 onClick={() => setActiveInput('loginUser')} 
                                 required
@@ -113,14 +126,36 @@ const UserAccess = () => {
                                 type="password" 
                                 placeholder='Please Enter your password' 
                                 value={credentials.password}
-                                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                                onChange={(e) => {
+                                                    setCredentials({ ...credentials, password: e.target.value });
+                                                    setError(null);
+                                                    setLoading(false);
+                                            }}
                                 className={`${activeInput == 'loginPassword' && !error && 'outline outline-2'} ${error && 'border-red-500'} border p-3 rounded-md placeholder-shown:text-sm`} 
                                 onClick={() => setActiveInput('loginPassword')}
                                 required 
                             />
                         </div>
                         {error && <p className="text-red-500 text-sm text-center">{error}</p>}
-                        <button className='border w-[34vw] p-3 mt-4 rounded-md text-white bg-[#002E3C] font-medium'  onClick={(e) => handleLogin(e)}> LOG IN </button>
+                            <button className={`border w-[34vw] p-3 mt-4 rounded-md text-white bg-[#002E3C] font-medium ${loading ? ' opacity-60 ' : ''}`}  onClick={(e) => handleLogin(e)} disabled={loading}>
+                                <div className="flex gap-6 items-center justify-center">
+                                    {
+                                        loading && 
+                                    <div className="flex gap-2 items-center animate-pulse">
+                                        <PuffLoader size={14} color='#fff' speedMultiplier={1} />
+                                        <PuffLoader size={12} color='#fff' speedMultiplier={0.7} />
+                                        <PuffLoader size={10} color='#fff' speedMultiplier={0.45} />
+                                    </div>}
+                                     LOG IN 
+                                    {
+                                        loading && 
+                                    <div className="flex gap-2 items-center animate-pulse">
+                                        <PuffLoader size={10} color='#fff' speedMultiplier={0.45} />
+                                        <PuffLoader size={12} color='#fff' speedMultiplier={0.7} />
+                                        <PuffLoader size={14} color='#fff' speedMultiplier={1} />
+                                    </div>}
+                                </div>
+                            </button>
                         <p className='text-sm mt-2 text-center'>Don't have an account?
                             <button className='ml-1 text-[#0082B3]' onClick={() => setAccess('signUp')}>Sign up</button>
                         </p>
