@@ -1,5 +1,5 @@
 // Keywords mapped to roles
-export const keywordRoleMapping = {
+const keywordRoleMapping = {
     'build': ['Builder', 'Bricklayer'],
     'building': ['Builder', 'Construction Worker'],
     'plumbing': ['Plumber'],
