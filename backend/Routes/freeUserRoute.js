@@ -39,72 +39,88 @@ router.post('/check-admins', async (req, res) => {
     }
   });
   
-  router.post('/auth/login', async (req, res) => {
-    try {
-      const { username, password } = req.body;
-      
-      // Find the user in the database
-      const user = await User.findOne({ username }).populate('tasks');
-  
-      if (!user) {
-        console.log('User not found with username:', username);
-        return res.status(400).json({ success: false, message: 'Invalid username' });
-      }
-  
-      const isMatch = await bcryptjs.compare(password, user.password);
-  
-      if (!isMatch) {
-        return res.status(401).json({ success: false, message: 'Invalid username or password' });
-      }
-  
-      // Format the user session data to match the `User` interface
-      req.session.user = {
-        _id: { $oid: user._id.toString() },  // ObjectId format
-        first_name: user.first_name,
-        last_name: user.last_name,
-        username: user.username,
-        password: user.password,  // Be cautious storing password, but if you must, you can encrypt or hash it
-        company_name: user.company_name,
-        company_email: user.company_email,
-        image: user.image,
-        role: user.role,
-        skill: user.skill,
-        notification: user.notification,
-        tasks: user.tasks
-      };
-  
-      // Respond with the user object (excluding password)
-      const userResponse = { ...req.session.user };
-      delete userResponse.password;  // Avoid sending password to the client
-  
-      res.json({ success: true, user: userResponse });
-    } catch (error) {
-      console.error('Login error:', error);
-      res.status(500).json({ success: false, message: 'Server error' });
-    }
-  });
+router.post('/auth/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
 
-  router.patch('/make-admin/:userId', async (req, res) => {
-    try {
-      const { userId } = req.params;
-  
-      // Find the user by ID
-      const user = await User.findById(userId);
-  
-      if (!user) {
-        return res.status(404).json({ message: "User not found" });
-      }
-  
-      // Change role to admin
-      user.role = 'admin';
-  
-      // Save updated user
-      await user.save();
-  
-      res.status(200).json({ message: `User ${user.username} is now an admin`, user });
-    } catch (error) {
-      res.status(400).json({ message: error.message });
+    if(req.session.user){
+      return res.status(401).json({ success: false, message: 'Another user is Logged In already'})
     }
-  });
+    
+    // Find the user in the database
+    const user = await User.findOne({ username }).populate('tasks');
+
+    if (!user) {
+      console.log('User not found with username:', username);
+      return res.status(400).json({ success: false, message: 'Invalid username' });
+    }
+
+    const isMatch = await bcryptjs.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: 'Invalid username or password' });
+    }
+
+    // Format the user session data to match the `User` interface
+    req.session.user = {
+      _id: { $oid: user._id.toString() },  // ObjectId format
+      first_name: user.first_name,
+      last_name: user.last_name,
+      username: user.username,
+      password: user.password,  // Be cautious storing password, but if you must, you can encrypt or hash it
+      company_name: user.company_name,
+      company_email: user.company_email,
+      image: user.image,
+      role: user.role,
+      skill: user.skill,
+      notification: user.notification,
+      tasks: user.tasks
+    };
+
+    
+    // Respond with the user object (excluding password)
+    const userResponse = { ...req.session.user };
+    delete userResponse.password;  // Avoid sending password to the client
+
+      req.session.save((err) => {
+          if (err) {
+              console.error('Session save error:', err);
+              return res.status(500).json({ success: false, message: 'Server error' });
+          }
+      
+          res.json({ success: true, user: userResponse });
+    });
+    
+      } catch (error) {
+        console.error('Login error:', error);
+        res.status(500).json({ success: false, message: 'Server error' });
+      }
+
+});
+
+router.patch('/make-admin/:userId', async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    // Find the user by ID
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Change role to admin
+    user.role = 'admin';
+
+    // Save updated user
+    await user.save();
+
+    res.status(200).json({ message: `User ${user.username} is now an admin`, user });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+
 
 module.exports = router;

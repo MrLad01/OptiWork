@@ -3,12 +3,17 @@ const router = express.Router();
 const User = require('../Models/User');
 const Task = require('../Models/Task');
 const bcryptjs = require('bcryptjs');
+const filterByCompany = require('../utils/filterByCompany');
 
 // Get all users
 router.get('/', async (req, res) => {
+  const { company_name } = req.session.user
+
   try {
     const users = await User.find().select('-password').populate('tasks');
-    res.json(users);
+
+    const filteredUsers = await filterByCompany(users, company_name);
+    res.json(filteredUsers); // Send back the filtered users
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -16,12 +21,13 @@ router.get('/', async (req, res) => {
 
 // Get a specific user
 router.get('/:id', async (req, res) => {
+  const { company_name } = req.session.user
   try {
     const user = await User.findById(req.params.id).select('-password').populate('tasks');
     if (user == null) {
       return res.status(404).json({ message: 'User not found' });
     }
-    res.json(user);
+    res.json(filterByCompany(user, company_name));
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -29,12 +35,14 @@ router.get('/:id', async (req, res) => {
 
 router.post('/auth/logout', (req, res) => {
   req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ message: 'Failed to logout. Try again.' });
-    }
-    res.json({ message: 'Successfully logged out' });
+      if (err) {
+          return res.status(500).json({ success: false, message: 'Failed to log out' });
+      }
+      res.clearCookie('connect.sid'); // Clear the cookie
+      res.json({ success: true, message: 'Logged out successfully' });
   });
 });
+
 
 // Create multiple users with tasks
 router.post('/', async (req, res) => {
@@ -120,9 +128,10 @@ router.post('/', async (req, res) => {
 
 // Update a user
 router.patch('/:id', async (req, res) => {
+  const { company_name } = req.session.user
   try {
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, { new: true }).select('-password');
-    res.json(updatedUser);
+    res.json(filterByCompany(updatedUser, company_name));
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

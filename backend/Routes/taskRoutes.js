@@ -6,7 +6,7 @@ const User = require('../Models/User');
 const ProjectTarget = require('../Models/ProjectTarget');
 const Counter = require('../Models/Counter');
 const TaskStatusChange = require('../Models/TaskStatusChange');
-const { assignUserBasedOnKeywords } = require('../helper');
+const filterTasksByCompany = require('../utils/filterTasksByCompany');
 
 
 // Function to log task status changes
@@ -52,11 +52,12 @@ const getNextTaskNumber = async () => {
 
 // Get all tasks
 router.get('/', async (req, res) => {
+  const {company_name} = req.session.user
   try {
     const tasks = await Task.find()
       .populate('assigned_user', 'first_name last_name')
       .populate('resources.material');
-    res.json(tasks);
+    res.json(filterTasksByCompany(tasks, company_name));
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -64,6 +65,7 @@ router.get('/', async (req, res) => {
 
 // Get a specific task
 router.get('/:id', async (req, res) => {
+  const {company_name} = req.session.user
   try {
     const task = await Task.findById(req.params.id)
       .populate('assigned_user', 'first_name last_name')
