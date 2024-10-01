@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Task = require('../Models/Task');
 const User = require('../Models/User');
+const ProjectTarget = require('../Models/ProjectTarget');
 const Counter = require('../Models/Counter');
 const TaskStatusChange = require('../Models/TaskStatusChange');
 
@@ -466,5 +467,86 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+
+// Endpoint to create a new project target with tasks
+router.post('/createProjectWithTasks', async (req, res) => {
+  try {
+    const { target_name, start_date, end_date, description, tasks } = req.body;
+
+    // Create the project target
+    const projectTarget = new ProjectTarget({
+      target_name,
+      start_date,
+      end_date,
+      description
+    });
+
+    const createdTasks = [];
+    const taskErrors = [];
+
+    // Loop through each task, assign users, and create tasks
+    for (const taskData of tasks) {
+      try {
+        // Automatically generate a task number
+        const taskNumber = await getNextTaskNumber();
+        taskData.task_number = taskNumber;
+        taskData.status = 'New';  // Default status to 'New'
+
+        // Assign user based on keywords in the task description
+        const assignedUser = await assignUserBasedOnKeywords(taskData.description);
+        if (!assignedUser) {
+          taskErrors.push({
+            message: `No user found for task: ${taskData.task_name}`,
+            error: 'No suitable user role found for this task'
+          });
+          continue;  // Skip this task if no user found
+        }
+
+        taskData.assigned_user = assignedUser._id;  // Assign user to the task
+
+        // Create the task
+        const task = new Task(taskData);
+        const newTask = await task.save();
+
+        // Add the task to the project target
+        projectTarget.tasks.push(newTask._id);
+
+        // Update assigned user's task array
+        await User.findByIdAndUpdate(assignedUser._id, { $push: { tasks: newTask._id } });
+
+        createdTasks.push(newTask);  // Add the created task to the array
+      } catch (taskError) {
+        taskErrors.push({
+          message: `Error creating task: ${taskData.task_name}`,
+          error: taskError.message,
+        });
+      }
+    }
+
+    // Save the project target after tasks are created
+    await projectTarget.save();
+
+    if (taskErrors.length > 0) {
+      return res.status(400).json({
+        message: "Error creating one or more tasks",
+        errors: taskErrors,
+        createdTasks
+      });
+    }
+
+    // Success response with the project target and created tasks
+    res.status(201).json({
+      message: "Project target and tasks successfully created",
+      projectTarget,
+      createdTasks
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+
 
 module.exports = router;
