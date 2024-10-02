@@ -22,7 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: false, // Set to true if using HTTPS
+    secure: true, // Set to true if using HTTPS
     httpOnly: true, // Helps to prevent XSS
     maxAge: 1000 * 60 * 60 // 1 hour
   }

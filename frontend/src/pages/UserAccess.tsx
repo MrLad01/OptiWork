@@ -25,7 +25,7 @@ const UserAccess = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post(`https://optiwork.onrender.com/api/users/auth/login`, data)
+            const response = await axios.post(`https://optiwork.onrender.com/api/user/auth/login`, data)
             console.log(response);
             
             if (response.data.success) {
