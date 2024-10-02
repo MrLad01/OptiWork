@@ -47,6 +47,4 @@ async function assignUserBasedOnKeywords(taskDescription) {
     return assignedUser;
   };
   
-module.exports = {
-    assignUserBasedOnKeywords
-};
+module.exports = assignUserBasedOnKeywords;
