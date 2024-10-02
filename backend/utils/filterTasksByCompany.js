@@ -4,11 +4,17 @@ const User = require('../Models/User');
 // Middleware to filter tasks based on the logged-in user's company_name
 const filterTasksByCompany = async (data, companyName) => {
 
-    const mappedUsers = data.map(item => User.findById(item.assigned_user._id))
-    console.log(data);
+    // Use Promise.all to handle multiple asynchronous operations concurrently
+    const tasksWithUsers = await Promise.all(
+        data.map(async item => {
+            // Find the user by the assigned_user ObjectId
+            const user = await User.findById(item.assigned_user);
+            return { ...item, assigned_user: user };
+        })
+    );
     
 
-    console.log(mappedUsers);
+    console.log(tasksWithUsers);
     
         
    return data.filter(
