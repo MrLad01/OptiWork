@@ -58,7 +58,9 @@ router.get('/', async (req, res) => {
     const tasks = await Task.find()
       .populate('assigned_user', 'first_name last_name')
       .populate('resources.material');
-    res.json(filterTasksByCompany(tasks, company_name));
+
+    const filteredTasks = filterTasksByCompany(tasks, company_name);
+    res.json({ tasks: filteredTasks });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

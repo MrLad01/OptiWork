@@ -11,14 +11,7 @@ const filterTasksByCompany = async (data, companyName) => {
             const user = await User.findById(item.assigned_user);
             return { ...item, assigned_user: user };
         })
-    );
-
-    
-        tasksWithUsers.forEach(task => {
-            console.log(task._doc); // Logs the core document without Mongoose metadata
-            console.log(task.assigned_user); // Logs the assigned user's details
-        });
-        
+    );      
 
      // Now that we have the full user details, filter based on company name
      return tasksWithUsers.filter(item => item.assigned_user?.company_name === companyName);
