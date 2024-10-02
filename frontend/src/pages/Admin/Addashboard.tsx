@@ -82,7 +82,7 @@ export const Addashboard = () => {
           <div className="w-full h-[49%] bg-white rounded-md p-3 flex flex-col gap-2 justify-between">
           <h2 className="text-[0.905rem] font-medium">Summary of the resources for the week </h2>
             <div className="w-full h-full flex items-center justify-center p-2 border-x border-slate-200 rounded-xl">
-              PieChart
+              Table
             </div>
           </div>
         </div>

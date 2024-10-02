@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { RingLoader } from 'react-spinners';
+import axios from 'axios';
 
 const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
-  const { isAuthenticated, setIsAuthenticated, user } = useAuth();
+  const { isAuthenticated, setIsAuthenticated} = useAuth();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -12,11 +13,18 @@ const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
       const token = localStorage.getItem('authToken');
       
       if (token === 'Logged in gee') {
-        setIsAuthenticated(true);
-        console.log(user);
-        
+        setIsAuthenticated(true);        
       } else {
         setIsAuthenticated(false);
+         // Additional logic like removing cookies, etc.
+        try {          
+          const response = await axios.post('/api/users/auth/logout');
+          console.log(response.data.message);
+          
+        } catch(err) {
+          console.error(err);
+          
+        }
       }
       
       setLoading(false);

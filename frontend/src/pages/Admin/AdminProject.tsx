@@ -73,7 +73,7 @@ export const AdminProject = () => {
                 : 'bg-gray-200 border-y border-slate-100 hover:font-semibold'
             }`}
           >
-            Create Project Target
+            Create New Project
           </Nav.Item>
           {/* Contact Tab */}
           <Nav.Item
@@ -89,7 +89,7 @@ export const AdminProject = () => {
         </Nav>
 
         {/* Render the content for the selected tab */}
-        <div className="mt-3 p-3 border rounded-lg h-[77vh] bg-white bg-opacity-30">
+        <div className="mt-3 p-1 border rounded-lg h-[77vh] bg-white bg-opacity-30">
           {renderContent()}
         </div>
       </div>

@@ -27,8 +27,10 @@ import { AdminSetting } from "./pages/Admin/AdminSetting"
 import axios from "axios"
 
 
+
 library.add(fas, fab, far);
 axios.defaults.withCredentials = true;
+
 
 function App() {
   

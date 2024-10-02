@@ -64,6 +64,7 @@ interface UserNotification {
     logout: () => void;
     KPI: KPI | null;
     setKPI: React.Dispatch<React.SetStateAction<KPI | null>>;
+    loading: boolean;
   }
 
 
@@ -126,14 +127,21 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsAuthenticated(true);
   };
   
-  const logout = () => {
+  const logout = async () => {
     localStorage.removeItem('authToken');
     setIsAuthenticated(false);
     // Additional logic like removing cookies, etc.
+    try {          
+      const response = await axios.post('/api/users/auth/logout');
+      console.log(response.data.message);
+      
+    } catch(err) {
+      console.error(err);    
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI, loading }}>
       {children}
     </AuthContext.Provider>
   );
