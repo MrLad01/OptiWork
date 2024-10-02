@@ -31,7 +31,6 @@ library.add(fas, fab, far);
 axios.defaults.withCredentials = true;
 
 function App() {
-
   
 const router = createBrowserRouter(
     createRoutesFromElements(
