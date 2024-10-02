@@ -89,7 +89,7 @@ export const AdminProject = () => {
         </Nav>
 
         {/* Render the content for the selected tab */}
-        <div className="mt-3 p-3 border rounded-lg h-[77vh] bg-white bg-opacity-90">
+        <div className="mt-3 p-3 border rounded-lg h-[77vh] bg-white bg-opacity-30">
           {renderContent()}
         </div>
       </div>

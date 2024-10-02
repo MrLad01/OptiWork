@@ -9,4 +9,13 @@ export default defineConfig({
       '@heroicons/react': '@heroicons/react/solid',
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://optiwork.onrender.com',
+        changeOrigin: true,
+        secure: false // Allow self-signed certificates in development
+      }
+    }
+  }
 })

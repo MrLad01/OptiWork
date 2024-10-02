@@ -1,4 +1,6 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import axios from 'axios';
+import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { calculateResourceUtilizationRate, calculateTaskCompletionRate, calculateTaskEfficiency } from '../helper';
 
 
 interface UserNotification {
@@ -55,6 +57,7 @@ interface UserNotification {
   
   interface AuthContextType {
     isAuthenticated: boolean;
+    setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
     user: User | null;  // To store the user details after login
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
     login: (userData: UserLogin) => void; // Now passes user data on login
@@ -71,19 +74,66 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   const [ KPI,  setKPI] = useState<KPI | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
+
+  useEffect(() => {
+    const restoreSession = async () => {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        try {          
+          const response = await axios.get('/api/test-auth');
+          if (response.data.user) {
+            setUser(response.data.user);
+            const user = response.data.user;
+            setIsAuthenticated(true);
+            if (user.tasks && user.tasks.length > 0){                    
+              const taskCompletionRate = calculateTaskCompletionRate(user.tasks);
+              const resourceUtilizationRate = calculateResourceUtilizationRate(user.tasks);
+              const taskEfficiency = calculateTaskEfficiency(user.tasks);
+              const taskOverdueRate = 100 - taskEfficiency;
+            
+              const userRating = Math.round(
+                                      ( taskCompletionRate * 0.4 ) + 
+                                      ( resourceUtilizationRate * 0.3 ) + 
+                                      ( taskEfficiency * 0.2 ) + 
+                                      ( taskOverdueRate * 0.1 )
+                                  );
+            
+              const kpi: KPI = {
+                taskCompletionRate,
+                resourceUtilizationRate,
+                taskEfficiency,
+                taskOverdueRate,
+                userRating
+              }
+
+              setKPI(kpi);
+            }
+          }
+        } catch (error) {
+          console.error('Session restoration failed:', error);
+          logout();
+        }
+      }
+      setLoading(false);
+    };
+
+    restoreSession();
+  }, []);
 
   const login = () => {
     setIsAuthenticated(true);
   };
-
+  
   const logout = () => {
+    localStorage.removeItem('authToken');
     setIsAuthenticated(false);
     // Additional logic like removing cookies, etc.
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout, user, setUser, KPI, setKPI }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI }}>
       {children}
     </AuthContext.Provider>
   );

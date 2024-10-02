@@ -25,8 +25,7 @@ const UserAccess = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const response = await axios.post(`https://optiwork.onrender.com/api/user/auth/login`, data)
-            console.log(response);
+            const response = await axios.post(`/api/user/auth/login`, data)
             
             if (response.data.success) {
                 const user = response.data.user;
@@ -57,6 +56,8 @@ const UserAccess = () => {
 
                 }
                 setLoading(false);
+                // Assume the token is returned in response data
+                localStorage.setItem('authToken', 'Logged in gee');
                 if(response.data.user.role === 'Admin'){
                     navigate('/admin/dashboard');
                 } else {
