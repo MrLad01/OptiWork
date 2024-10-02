@@ -14,12 +14,8 @@ const filterTasksByCompany = async (data, companyName) => {
     );
     
 
-    console.log(tasksWithUsers);
-    
-        
-   return data.filter(
-        item => User.findById(item.assigned_user._id).company_name === companyName
-    )
+     // Now that we have the full user details, filter based on company name
+     return tasksWithUsers.filter(item => item.assigned_user?.company_name === companyName);
    
 };
 
