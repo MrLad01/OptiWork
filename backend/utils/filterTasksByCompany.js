@@ -8,7 +8,6 @@ const filterTasksByCompany = async (data, companyName) => {
         data.map(async (item) => {
             // Find the user by the assigned_user ObjectId
             const user = await User.findById(item.assigned_user);
-            console.log(`Found user: ${JSON.stringify(user)}`); // Log user for debugging
             return { ...item.toObject(), assigned_user: user }; // Convert mongoose document to plain object
         })
     );
