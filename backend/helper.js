@@ -39,10 +39,10 @@ async function assignUserBasedOnKeywords(taskDescription, companyName) {
       const roles = keywordRoleMapping[keyword];
   
        // Find a user from the company with matching role based on keywords
-        assignedUser = await User.findOne({
-          company_name: companyName,
-          role: { $in: keywords } // Modify as per your keyword matching logic
-        });
+      const user = await User.findOne({
+        company_name: companyName,
+        role: { $in: roles } // Modify as per your keyword matching logic
+      });
   
       if (assignedUser) break;  // Stop once we find an appropriate user
     }
