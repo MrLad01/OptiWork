@@ -1,3 +1,5 @@
+const User = require('./Models/User');  // Adjust the path as necessary
+
 // Keywords mapped to roles
 const keywordRoleMapping = {
   'build': ['Builder', 'Bricklayer'],
