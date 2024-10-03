@@ -610,7 +610,7 @@ router.post('/createProjectWithTasks', async (req, res) => {
 });
 
 // Endpoint to get the latest project target for a specific company
-router.get('/latestProjectTarget', async (req, res) => {
+router.post('/latestProjectTarget', async (req, res) => {
   const { company_name } = req.session.user; // Assuming session has company_name
   
   try {
@@ -660,7 +660,7 @@ router.patch('/closeProjectTarget/:id', async (req, res) => {
 });
 
 // Endpoint to get all project targets for a company
-router.get('/getProjectTargets', async (req, res) => {
+router.post('/getProjectTargets', async (req, res) => {
   const { company_name } = req.session.user;  // Assuming session stores the user's company_name
 
   try {
