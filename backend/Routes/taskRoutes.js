@@ -105,7 +105,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Middleware to create tasks only for users in the same company as the logged-in user
 router.post('/', async (req, res) => {
+  const { company_name } = req.session.user; // Get logged-in user's company name
+
   try {
     const tasksData = req.body;
 
@@ -124,12 +127,12 @@ router.post('/', async (req, res) => {
           assignedUsers = [convertOidToObjectId(taskData.assigned_user)];
         }
 
-        // Validate that all assigned users exist in the database
-        const existingUsers = await User.find({ _id: { $in: assignedUsers } });
+        // Validate that all assigned users exist and are from the same company
+        const existingUsers = await User.find({ _id: { $in: assignedUsers }, company_name: company_name });
         if (existingUsers.length !== assignedUsers.length) {
           taskErrors.push({
-            message: `Assigned user(s) not found for task: ${taskData.task_name}`,
-            error: 'Invalid user ID(s) provided'
+            message: `Assigned user(s) not found or not in your company for task: ${taskData.task_name}`,
+            error: 'Invalid or unauthorized user ID(s) provided'
           });
           return; // Skip this task
         }
@@ -207,12 +210,13 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 // Update a task
 router.patch('/:id', async (req, res) => {
+  const { company_name } = req.session.user; // Get the logged-in user's company name
+
   try {
     const task = await Task.findById(req.params.id);
-    
+
     if (!task) {
       return res.status(404).json({ message: 'Task not found' });
     }
@@ -220,23 +224,26 @@ router.patch('/:id', async (req, res) => {
     // Record the old status before updating
     const oldStatus = task.status;
 
-    // Update the assigned user if it has changed
+    // Handle assigned user change only if it has changed
     if (task.assigned_user.toString() !== req.body.assigned_user) {
-      // Remove task from old user's tasks array
+      const newAssignedUserId = req.body.assigned_user;
+
+      // Validate if the new assigned user exists and belongs to the same company
+      const assignedUser = await User.findOne({ _id: newAssignedUserId, company_name: company_name });
+      if (!assignedUser) {
+        return res.status(400).json({ message: 'Assigned user not found or not in your company' });
+      }
+
+      // Remove task from the old user's tasks array
       if (task.assigned_user) {
-        await User.findByIdAndUpdate(task.assigned_user, 
-          { $pull: { tasks: task._id } }
-        );
+        await User.findByIdAndUpdate(task.assigned_user, { $pull: { tasks: task._id } });
       }
-      // Add task to new user's tasks array
-      if (req.body.assigned_user) {
-        await User.findByIdAndUpdate(req.body.assigned_user, 
-          { $push: { tasks: task._id } }
-        );
-      }
+
+      // Add task to the new user's tasks array
+      await User.findByIdAndUpdate(newAssignedUserId, { $push: { tasks: task._id } });
     }
 
-    // Update the task with the new data
+    // Update the task with the new data (other fields like status, description, etc.)
     const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
     // Record the status change if the status has changed
@@ -245,7 +252,7 @@ router.patch('/:id', async (req, res) => {
         task: updatedTask._id,
         old_status: oldStatus,
         new_status: updatedTask.status,
-        changed_by: req.user._id // Assuming req.user is populated with the logged-in user
+        changed_by: req.user._id // Assuming req.user contains the logged-in user's details
       });
       await statusChange.save();
     }
@@ -258,9 +265,12 @@ router.patch('/:id', async (req, res) => {
 
 // Start a task (automatically set status to 'In-Progress')
 router.patch('/:id/start', async (req, res) => {
+  const { company_name } = req.session.user; // Get the logged-in user's company name
+
   try {
-    const task = await Task.findById(req.params.id);
-    
+    const task = await Task.findById(req.params.id)
+      .populate('assigned_user'); // Populating assigned_user for further validation
+
     // Check if the task exists
     if (!task) {
       return res.status(404).json({ message: 'Task not found' });
@@ -271,17 +281,20 @@ router.patch('/:id/start', async (req, res) => {
       return res.status(400).json({ message: 'Task cannot be started in its current status', status: task.status });
     }
 
-    // Log old status and change to 'In-Progress'
+    // Ensure the logged-in user belongs to the same company as the task's assigned user
+    if (!task.assigned_user || task.assigned_user.company_name !== company_name) {
+      return res.status(403).json({ message: 'You are not authorized to start this task' });
+    }
+
+    // Log the old status and change the status to 'In-Progress'
     const oldStatus = task.status;
     task.status = 'In-Progress';
     task.start_time = Date.now();
     await task.save();
 
-    // Ensure req.user._id exists for logging
+    // Log the status change, assuming req.user._id exists for logging
     if (task.assigned_user && task.assigned_user._id) {
       await logStatusChange(task, oldStatus, 'In-Progress', task.assigned_user._id);
-    } else {
-      console.warn("User ID not found for logging the status change");
     }
 
     res.json(task);
@@ -294,13 +307,17 @@ router.patch('/:id/start', async (req, res) => {
 });
 
 
+
 // Submit task for approval (automatically set status to 'Pending Approval')
 router.patch('/:id/submit', async (req, res) => {
   const { resources_used } = req.body;
+  const { company_name } = req.session.user; // Get the logged-in user's company name
 
   try {
-    const task = await Task.findById(req.params.id);
-    
+    const task = await Task.findById(req.params.id)
+      .populate('assigned_user'); // Populate assigned_user for company-level validation
+
+    // Check if the task exists
     if (!task) {
       return res.status(404).json({ message: 'Task not found' });
     }
@@ -308,6 +325,11 @@ router.patch('/:id/submit', async (req, res) => {
     // Ensure task is either 'In-Progress' or 'Restarted'
     if (task.status !== 'In-Progress' && task.status !== 'Restarted') {
       return res.status(400).json({ message: 'Task must be In-Progress or Restarted to submit for approval', status: task.status });
+    }
+
+    // Ensure the logged-in user belongs to the same company as the task's assigned user
+    if (!task.assigned_user || task.assigned_user.company_name !== company_name) {
+      return res.status(403).json({ message: 'You are not authorized to submit this task for approval' });
     }
 
     // Check if the user has provided resources used
@@ -324,11 +346,9 @@ router.patch('/:id/submit', async (req, res) => {
     task.time_sent_for_approval = Date.now();
     await task.save();
 
-    // Ensure req.user._id exists for logging
+    // Log the status change, assuming task.assigned_user._id exists for logging
     if (task.assigned_user && task.assigned_user._id) {
       await logStatusChange(task, oldStatus, 'Pending Approval', task.assigned_user._id);
-    } else {
-      console.warn("User ID not found for logging the status change");
     }
 
     res.json(task);
@@ -344,6 +364,12 @@ router.patch('/:id/submit', async (req, res) => {
 // Approve or Decline a task (admin only)
 router.patch('/:id/approval', async (req, res) => {
   const { approval } = req.body; // 'approve' or 'decline'
+  const { role } = req.session.user;
+
+  // Check if the user is an admin
+  if (role !== 'Admin') {
+    return res.status(403).json({ message: 'Access denied. Admins only.' });
+  }
 
   try {
     const task = await Task.findById(req.params.id);
@@ -500,6 +526,8 @@ router.delete('/:id', async (req, res) => {
 
 // Endpoint to create a new project target with tasks
 router.post('/createProjectWithTasks', async (req, res) => {
+  const { company_name } = req.session.user;
+
   try {
     const { target_name, start_date, end_date, description, tasks } = req.body;
 
@@ -523,7 +551,7 @@ router.post('/createProjectWithTasks', async (req, res) => {
         taskData.status = 'New';  // Default status to 'New'
 
         // Assign user based on keywords in the task description
-        const assignedUser = await assignUserBasedOnKeywords(taskData.description);
+        const assignedUser = await assignUserBasedOnKeywords(taskData.description, company_name);
         if (!assignedUser) {
           taskErrors.push({
             message: `No user found for task: ${taskData.task_name}`,

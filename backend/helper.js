@@ -30,7 +30,7 @@ const keywordRoleMapping = {
   };
   
   // Function to assign users based on extracted keywords
-async function assignUserBasedOnKeywords(taskDescription) {
+async function assignUserBasedOnKeywords(taskDescription, companyName) {
     const extractedKeywords = extractKeywords(taskDescription);
     let assignedUser = null;
   
@@ -38,8 +38,11 @@ async function assignUserBasedOnKeywords(taskDescription) {
       // Get the roles associated with the extracted keyword
       const roles = keywordRoleMapping[keyword];
   
-      // Find a user with any of the associated roles
-      assignedUser = await User.findOne({ role: { $in: roles } });
+       // Find a user from the company with matching role based on keywords
+        assignedUser = await User.findOne({
+          company_name: companyName,
+          role: { $in: keywords } // Modify as per your keyword matching logic
+        });
   
       if (assignedUser) break;  // Stop once we find an appropriate user
     }
