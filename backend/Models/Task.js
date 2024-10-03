@@ -25,7 +25,7 @@ const taskSchema = new mongoose.Schema({
   },
 
   // Assigned user reference
-  assigned_user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  assigned_user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }],
 
   // Resource details
   resources: {
