@@ -49,6 +49,20 @@ const getNextTaskNumber = async () => {
   return `TASK-${paddedTaskNumber}`;
 };
 
+// Middleware to find a single task by ID and verify company
+const getTaskByIdAndCompany = async (taskId, companyName) => {
+  // Find the task by its ID and populate necessary fields
+  const task = await Task.findById(taskId)
+    .populate('assigned_user', 'first_name last_name company_name')  // Populate with company_name
+    .populate('resources.material');
+
+  // Check if the task exists and if it belongs to the correct company
+  if (task && task.assigned_user?.company_name === companyName) {
+    return task; // Task belongs to the correct company
+  }
+
+  return null; // Either task not found or doesn't belong to the company
+  };
 
 
 // Get all tasks
@@ -72,23 +86,19 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a specific task
+// Route to get a single task by ID
 router.get('/:id', async (req, res) => {
-  const {company_name} = req.session.user
+  const { company_name } = req.session.user; // Logged-in user's company_name
+  const { id } = req.params; // Task ID from the request parameters
+
   try {
-    const task = await Task.findById(req.params.id)
-      .populate('assigned_user', 'first_name last_name')
-      .populate('resources.material');
-    if (task == null) {
-      return res.status(404).json({ message: 'Task not found' });
-    }
- 
-    // Ensure we await the result of the filtering function
-    const filteredTasks = await filterTasksByCompany(task, company_name);
-    if(filteredTasks.length > 0){
-      res.json(filteredTasks);
+    // Call the function to get the task and validate company
+    const task = await getTaskByIdAndCompany(id, company_name);
+
+    if (task) {
+      res.json({ task });
     } else {
-      res.status(401).json({message: 'This task does not exists for a user in your company'})
+      res.status(404).json({ message: 'Task not found or does not belong to your company' });
     }
   } catch (error) {
     res.status(500).json({ message: error.message });
