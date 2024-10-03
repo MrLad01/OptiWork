@@ -63,7 +63,6 @@ router.get('/', async (req, res) => {
       .populate('assigned_user', 'first_name last_name')
       .populate('resources.material');
 
-    // const filteredTasks = filterTasksByCompany(tasks, company_name);
     // Ensure we await the result of the filtering function
     const filteredTasks = await filterTasksByCompany(tasks, company_name);
     
@@ -83,7 +82,14 @@ router.get('/:id', async (req, res) => {
     if (task == null) {
       return res.status(404).json({ message: 'Task not found' });
     }
-    res.json(task);
+ 
+    // Ensure we await the result of the filtering function
+    const filteredTasks = await filterTasksByCompany(task, company_name);
+    if(filteredTasks.length > 0){
+      res.json(filteredTasks);
+    } else {
+      res.status(401).json({message: 'This task does not exists for a user in your company'})
+    }
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

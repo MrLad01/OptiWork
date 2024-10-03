@@ -13,12 +13,12 @@ const filterTasksByCompany = async (data, companyName) => {
         })
     );
 
-    console.log(`Tasks with Users: ${JSON.stringify(tasksWithUsers)}`); // Log tasks with users for debugging
+    // console.log(`Tasks with Users: ${JSON.stringify(tasksWithUsers)}`); // Log tasks with users for debugging
 
     // Now that we have the full user details, filter based on company name
     const filteredTasks = tasksWithUsers.filter((item) => item.assigned_user?.company_name === companyName);
 
-    console.log(`Filtered Tasks: ${JSON.stringify(filteredTasks)}`); // Log filtered tasks for debugging
+    // console.log(`Filtered Tasks: ${JSON.stringify(filteredTasks)}`); // Log filtered tasks for debugging
     return filteredTasks;
 };
 
