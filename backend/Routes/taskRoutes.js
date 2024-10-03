@@ -54,6 +54,10 @@ const getNextTaskNumber = async () => {
 // Get all tasks
 router.get('/', async (req, res) => {
   const {company_name} = req.session.user
+  if (!company_name) {
+    return res.status(400).json({ message: 'Company name not found in session.' });
+  }
+
   try {
     const tasks = await Task.find()
       .populate('assigned_user', 'first_name last_name')
