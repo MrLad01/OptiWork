@@ -5,15 +5,21 @@ const User = require('../Models/User');
 const filterTasksByCompany = async (data, companyName) => {
     // Use Promise.all to handle multiple asynchronous operations concurrently
     const tasksWithUsers = await Promise.all(
-        data.map(async item => {
+        data.map(async (item) => {
             // Find the user by the assigned_user ObjectId
             const user = await User.findById(item.assigned_user);
-            return { ...item.toObject(), assigned_user: user };  // Convert mongoose object to plain object
+            console.log(`Found user: ${JSON.stringify(user)}`); // Log user for debugging
+            return { ...item.toObject(), assigned_user: user }; // Convert mongoose document to plain object
         })
     );
 
+    console.log(`Tasks with Users: ${JSON.stringify(tasksWithUsers)}`); // Log tasks with users for debugging
+
     // Now that we have the full user details, filter based on company name
-    return tasksWithUsers.filter(item => item.assigned_user?.company_name === companyName);
+    const filteredTasks = tasksWithUsers.filter((item) => item.assigned_user?.company_name === companyName);
+
+    console.log(`Filtered Tasks: ${JSON.stringify(filteredTasks)}`); // Log filtered tasks for debugging
+    return filteredTasks;
 };
 
 module.exports = filterTasksByCompany;
