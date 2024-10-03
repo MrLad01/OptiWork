@@ -7,7 +7,7 @@ const ProjectTarget = require('../Models/ProjectTarget');
 const Counter = require('../Models/Counter');
 const TaskStatusChange = require('../Models/TaskStatusChange');
 const filterTasksByCompany = require('../utils/filterTasksByCompany');
-const assignUserBasedOnKeywords = require('../helper')
+const assignUsersBasedOnKeywords = require('../helper')
 
 
 // Function to log task status changes
@@ -550,17 +550,18 @@ router.post('/createProjectWithTasks', async (req, res) => {
         taskData.task_number = taskNumber;
         taskData.status = 'New';  // Default status to 'New'
 
-        // Assign user based on keywords in the task description
-        const assignedUser = await assignUserBasedOnKeywords(taskData.description, company_name);
-        if (!assignedUser) {
+        // Assign users based on keywords in the task description
+        const assignedUsers = await assignUsersBasedOnKeywords(taskData.description, company_name);
+        if (!assignedUsers.length) {
           taskErrors.push({
-            message: `No user found for task: ${taskData.task_name}`,
+            message: `No users found for task: ${taskData.task_name}`,
             error: 'No suitable user role found for this task'
           });
-          continue;  // Skip this task if no user found
+          continue;  // Skip this task if no users found
         }
 
-        taskData.assigned_user = assignedUser._id;  // Assign user to the task
+        // Store the IDs of assigned users
+        taskData.assigned_user = assignedUsers.map(user => user._id);  // Assign all users to the task
 
         // Create the task
         const task = new Task(taskData);
@@ -569,8 +570,10 @@ router.post('/createProjectWithTasks', async (req, res) => {
         // Add the task to the project target
         projectTarget.tasks.push(newTask._id);
 
-        // Update assigned user's task array
-        await User.findByIdAndUpdate(assignedUser._id, { $push: { tasks: newTask._id } });
+        // Update each assigned user's task array
+        for (const user of assignedUsers) {
+          await User.findByIdAndUpdate(user._id, { $push: { tasks: newTask._id } });
+        }
 
         createdTasks.push(newTask);  // Add the created task to the array
       } catch (taskError) {
@@ -603,6 +606,7 @@ router.post('/createProjectWithTasks', async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
+
 
 
 
