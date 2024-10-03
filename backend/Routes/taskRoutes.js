@@ -538,7 +538,7 @@ router.post('/createProjectWithTasks', async (req, res) => {
       end_date,
       description,
       company_name,   // Add company_name from the session
-      created_by: _id // Add the user ID of the creator from session
+      created_by: _id.$oid // Add the user ID of the creator from session
     });
 
     const createdTasks = [];
