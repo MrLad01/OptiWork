@@ -9,13 +9,22 @@ import {  PuffLoader } from 'react-spinners';
 // import { set } from 'date-fns';
 
 const UserAccess = () => {
-    const { login, setUser, setKPI } = useAuth();
+    const { login, setUser, setKPI, setCompanyTasks } = useAuth();
     const navigate = useNavigate();
     const [access, setAccess] = useState<string>('logIn');
     const [activeInput, setActiveInput] = useState<string>('');
     const [credentials, setCredentials] = useState({ username: '', password: '' });
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean | undefined>(false);
+
+    const fetchAdminTasks = async () => {
+        try {
+          const response = await axios.get('/api/tasks');
+          setCompanyTasks(response.data.tasks);
+        } catch (error) {
+          console.error('Failed to fetch admin tasks:', error);
+        }
+      };
 
     const handleLogin = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const data = {
@@ -31,6 +40,9 @@ const UserAccess = () => {
                 const user = response.data.user;
                 login(data);
                 setUser(user);
+                if (user.role === 'Admin') {
+                    await fetchAdminTasks();
+                }
                 if (user.tasks && user.tasks.length > 0){                    
                     const taskCompletionRate = calculateTaskCompletionRate(user.tasks);
                     const resourceUtilizationRate = calculateResourceUtilizationRate(user.tasks);

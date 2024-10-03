@@ -1,12 +1,19 @@
 
-import { useAuth } from "../../context/AuthContext";
+import { Task, useAuth } from "../../context/AuthContext";
 import {  formatDate, formatTime, getGreeting } from "../../helper"
 import { useEffect, useState } from "react";
 
 export const Addashboard = () => {
-  const { user } = useAuth();
+  const { user, companyTasks } = useAuth();
+  const task = companyTasks !== null ? companyTasks : [];
+  const [ tasks, setTasks ] = useState<Task[]>(task);
   const [currentDate] = useState(new Date());
   const [currentTime, setCurrentTime] = useState(new Date());
+
+
+  const pendingTasksCount = tasks.filter(task => task.status === 'Pending').length;
+  const inprogressTasksCount = tasks.filter(task => task.status === 'In-Progress').length;
+  const completedTasksCount = tasks.filter(task => task.status === 'Completed').length;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -38,7 +45,7 @@ export const Addashboard = () => {
               <h3 className="text-xs font-semibold">Number of Pending Tasks</h3>
               <div className="flex justify-end h-full items-center pr-4">
                 <div className="flex items-end gap-3">
-                  <span className="text-5xl font-medium opacity-80">04</span>
+                  <span className="text-5xl font-medium opacity-80">{ pendingTasksCount }</span>
                   <span className="text-2xl font-extralight opacity-15" >/ 10</span>
                 </div>
               </div>
@@ -47,7 +54,7 @@ export const Addashboard = () => {
               <h3 className="text-xs font-semibold">Number of Tasks in progress</h3>
               <div className="flex justify-end h-full items-center pr-4">
                 <div className="flex items-end gap-3">
-                  <span className="text-5xl font-medium opacity-80">03</span>
+                  <span className="text-5xl font-medium opacity-80"> { inprogressTasksCount } </span>
                   <span className="text-2xl font-extralight opacity-15" >/ 10</span>
                 </div>
               </div>
@@ -56,7 +63,7 @@ export const Addashboard = () => {
              <h3 className="text-xs font-semibold">Number of Tasks completed</h3>
               <div className="flex justify-end h-full items-center pr-4">
                 <div className="flex items-end gap-3">
-                  <span className="text-5xl font-medium opacity-80">03</span>
+                  <span className="text-5xl font-medium opacity-80"> { completedTasksCount } </span>
                   <span className="text-2xl font-extralight opacity-15" >/ 10</span>
                 </div>
               </div>

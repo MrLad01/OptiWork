@@ -54,7 +54,52 @@ interface UserNotification {
     taskOverdueRate: number;
     userRating: number;
   }
-  
+
+  // Interface for a Material
+  interface Material {
+    _id: string;
+    material_name: string;
+    quantity: number;
+    unit_price: number;
+    supplier_name: string;
+    supplier_contact: string;
+    purchase_date: string;
+    expiration_date: string;
+    storage_location: string;
+    material_type: string;
+    weight: number;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  }
+
+  // Interface for Resources used in a task
+  interface Resource {
+    material: Material;
+    quantity: number;
+    _id: string;
+  }
+
+  // Interface for Task
+  export interface Task {
+    _id: string;
+    task_number: string;
+    task_name: string;
+    description: string;
+    due_date: string;
+    due_time: string;
+    actual_time: number | null;
+    estimated_time: number | null;
+    priority: string;
+    status: string;
+    assigned_user: User; // Referencing a single assigned user
+    resources: Resource[]; // Array of resources
+    resources_used: Resource[]; // Array of used resources (if applicable)
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  }
+    
   interface AuthContextType {
     isAuthenticated: boolean;
     setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
@@ -65,6 +110,8 @@ interface UserNotification {
     KPI: KPI | null;
     setKPI: React.Dispatch<React.SetStateAction<KPI | null>>;
     loading: boolean;
+    companyTasks: Task[] | null;
+    setCompanyTasks: React.Dispatch<React.SetStateAction<Task[] | null>>;
   }
 
 
@@ -76,6 +123,16 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
   const [ KPI,  setKPI] = useState<KPI | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [companyTasks, setCompanyTasks] = useState<Task[] | null>(null);
+
+  const fetchAdminTasks = async () => {
+    try {
+      const response = await axios.get('/api/tasks');
+      setCompanyTasks(response.data.tasks);
+    } catch (error) {
+      console.error('Failed to fetch admin tasks:', error);
+    }
+  };
 
 
   useEffect(() => {
@@ -87,6 +144,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           if (response.data.user) {
             setUser(response.data.user);
             const user = response.data.user;
+            if (user.role === 'Admin') {
+              await fetchAdminTasks();
+            }
             setIsAuthenticated(true);
             if (user.tasks && user.tasks.length > 0){                    
               const taskCompletionRate = calculateTaskCompletionRate(user.tasks);
@@ -141,7 +201,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI, loading }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI, loading, companyTasks, setCompanyTasks }}>
       {children}
     </AuthContext.Provider>
   );

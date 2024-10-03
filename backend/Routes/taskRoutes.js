@@ -526,7 +526,7 @@ router.delete('/:id', async (req, res) => {
 
 // Endpoint to create a new project target with tasks
 router.post('/createProjectWithTasks', async (req, res) => {
-  const { company_name } = req.session.user;
+  const { company_name, _id } = req.session.user;
 
   try {
     const { target_name, start_date, end_date, description, tasks } = req.body;
@@ -536,7 +536,9 @@ router.post('/createProjectWithTasks', async (req, res) => {
       target_name,
       start_date,
       end_date,
-      description
+      description,
+      company_name,   // Add company_name from the session
+      created_by: _id // Add the user ID of the creator from session
     });
 
     const createdTasks = [];
@@ -606,6 +608,82 @@ router.post('/createProjectWithTasks', async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
+
+// Endpoint to get the latest project target for a specific company
+router.get('/latestProjectTarget', async (req, res) => {
+  const { company_name } = req.session.user; // Assuming session has company_name
+  
+  try {
+    // Find the latest project target for the user's company and populate associated tasks and assigned users
+    const latestProject = await ProjectTarget.findOne({ company_name })
+      .sort({ createdAt: -1 })  // Sort by creation date, latest first
+      .populate({
+        path: 'tasks',
+        populate: { path: 'assigned_user', select: 'first_name last_name username role' } // Populating assigned user details in tasks
+      })
+      .exec();
+
+    if (!latestProject) {
+      return res.status(404).json({ message: "No project target found for the company" });
+    }
+
+    res.status(200).json({
+      message: "Latest project target retrieved successfully",
+      latestProject
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+// Endpoint to close a project target
+router.patch('/closeProjectTarget/:id', async (req, res) => {
+  const projectId = req.params.id;
+
+  try {
+    // Find the project target by ID
+    const projectTarget = await ProjectTarget.findById(projectId);
+
+    if (!projectTarget) {
+      return res.status(404).json({ message: "Project target not found" });
+    }
+
+    // Update project target to mark it as closed (you can add other status fields if needed)
+    projectTarget.isClosed = true;  // Assuming a field called 'isClosed' or modify based on your schema
+    projectTarget.end_date = new Date(); // Set the end date to the current date when closing
+    await projectTarget.save();
+
+    res.status(200).json({ message: "Project target closed successfully", projectTarget });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+// Endpoint to get all project targets for a company
+router.get('/getProjectTargets', async (req, res) => {
+  const { company_name } = req.session.user;  // Assuming session stores the user's company_name
+
+  try {
+    // Find all project targets that match the company_name
+    const projectTargets = await ProjectTarget.find({ company_name }).populate('tasks').populate('created_by');
+
+    // If no project targets are found, return a 404
+    if (!projectTargets || projectTargets.length === 0) {
+      return res.status(404).json({ message: "No project targets found for this company" });
+    }
+
+    // Return the found project targets
+    res.status(200).json({
+      message: "Project targets retrieved successfully",
+      projectTargets
+    });
+
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+
 
 
 
