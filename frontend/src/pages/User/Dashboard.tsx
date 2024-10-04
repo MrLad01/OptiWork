@@ -116,8 +116,8 @@ export const Dashboard = () => {
               <div className="w-full h-[90%] border overflow-y-auto">
                 {loading ? (
                   <Skeleton count={5} height={20} width="90%" />
-                ) : (
-                  <table className="table-auto w-full text-[0.82rem] text-left border-white">
+                ) : (<>
+                  { tasks && tasks.length > 0 ? <table className="table-auto w-full text-[0.82rem] text-left border-white">
                     <thead>
                       <tr>
                         <th className="px-4 py-2">Task Name</th>
@@ -134,7 +134,10 @@ export const Dashboard = () => {
                         </tr>
                       ))}
                     </tbody>
-                  </table>
+                  </table> :
+                  <div className="flex justify-center items-center text-lg opacity-20 h-full w-full"> You have no history of any tasks </div>
+                  }
+                  </>
                 )}
               </div>
             </div>
@@ -151,7 +154,9 @@ export const Dashboard = () => {
                   {loading ? (
                     <Skeleton count={5} height={20} width="90%" />
                   ) : (
-                    <table className="table-auto w-full text-xs text-left">
+                    <>
+                    { currentTasks && currentTasks.length > 0 ?
+                     <table className="table-auto w-full text-xs text-left">
                       <thead>
                         <tr>
                           <th className="px-4 py-2">Task Name</th>
@@ -168,7 +173,11 @@ export const Dashboard = () => {
                           </tr>
                         ))}
                       </tbody>
-                    </table>
+                    </table>:
+                      <div className="flex justify-center items-center text-lg opacity-20 w-full h-full"> You have no task in progress </div>
+
+                  }
+                    </>
                   )}
                 </div>
             </div>

@@ -9,7 +9,7 @@ import {  PuffLoader } from 'react-spinners';
 // import { set } from 'date-fns';
 
 const UserAccess = () => {
-    const { login, setUser, setKPI, setCompanyTasks } = useAuth();
+    const { login, setUser, setKPI, setCompanyTasks, setLatestProject, setProjects, setMaterials } = useAuth();
     const navigate = useNavigate();
     const [access, setAccess] = useState<string>('logIn');
     const [activeInput, setActiveInput] = useState<string>('');
@@ -21,6 +21,31 @@ const UserAccess = () => {
         try {
           const response = await axios.get('/api/tasks');
           setCompanyTasks(response.data.tasks);
+        } catch (error) {
+          console.error('Failed to fetch admin tasks:', error);
+        }
+      };
+
+      const fetchLatestProject = async () => {
+        try {
+          const response = await axios.post('/api/tasks/latestProjectTarget');
+          setLatestProject(response.data.latestProject);
+        } catch (error) {
+          console.error('Failed to fetch admin tasks:', error);
+        }
+      };
+      const FetchMaterials = async() => {
+        try {
+          const response = await axios.get('/api/materials/');
+          setMaterials(response.data);
+        } catch (error) {
+          console.error('Error fetching materials:', error);
+        }
+      }
+      const fetchProject = async () => {
+        try {
+          const response = await axios.post('/api/tasks/getProjectTargets');
+          setProjects(response.data.projectTargets);
         } catch (error) {
           console.error('Failed to fetch admin tasks:', error);
         }
@@ -42,6 +67,9 @@ const UserAccess = () => {
                 setUser(user);
                 if (user.role === 'Admin') {
                     await fetchAdminTasks();
+                    await fetchLatestProject();
+                    await fetchProject();
+                    await FetchMaterials();
                 }
                 if (user.tasks && user.tasks.length > 0){                    
                     const taskCompletionRate = calculateTaskCompletionRate(user.tasks);

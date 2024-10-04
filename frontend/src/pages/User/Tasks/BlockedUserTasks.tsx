@@ -72,7 +72,9 @@ export const BlockedUserTasks = () => {
       {loading ? (
                 <Skeleton count={5} height={20} width="100%" />
               ) : (
-      <table className="table-auto w-full text-xs">
+      <>
+      { tasks && tasks.filter(task => task.status === 'Blocked').length > 0 ?
+       <table className="table-auto w-full text-xs">
           <thead className="">
             <tr>
               <th className="px-2 py-1">Task Number</th>
@@ -136,7 +138,10 @@ export const BlockedUserTasks = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> :
+        <div className="flex justify-center items-center text-lg opacity-30 w-full h-[56vh]"> None of your tasks have been declined </div>
+        }
+        </>
               )}
         <TaskDetailsModal
           isOpen={isDetailsModalOpen}

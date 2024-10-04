@@ -3,6 +3,7 @@ import React, { createContext, useState, useContext, ReactNode, useEffect } from
 import { calculateResourceUtilizationRate, calculateTaskCompletionRate, calculateTaskEfficiency } from '../helper';
 
 
+
 interface UserNotification {
     id: string;
     from: string;
@@ -80,6 +81,23 @@ interface UserNotification {
     _id: string;
   }
 
+  export interface Resource2 {
+    _id: string;
+    material_name: string;
+    quantity: number;
+    unit_price: number;
+    supplier_name: string;
+    supplier_contact: string;
+    purchase_date: Date;
+    expiration_date: Date;
+    storage_location: string;
+    material_type: string;
+    weight: number;
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
+  }
+
   // Interface for Task
   export interface Task {
     _id: string;
@@ -99,6 +117,41 @@ interface UserNotification {
     updatedAt: string;
     __v: number;
   }
+  // Interface for Task
+  export interface Task2 {
+    _id: string;
+    task_number: string;
+    task_name: string;
+    description: string;
+    due_date: string;
+    due_time: string;
+    actual_time: number | null;
+    estimated_time: number | null;
+    priority: string;
+    status: string;
+    assigned_user: User[]; // Referencing a single assigned user
+    resources: Resource[]; // Array of resources
+    resources_used: Resource[]; // Array of used resources (if applicable)
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+  }
+
+  // Define the interface for a project target
+  interface ProjectTarget {
+    _id: string; // Project target's unique identifier
+    target_name: string; // Name of the project target
+    start_date: string; // Start date of the project
+    end_date: string; // End date of the project
+    description: string; // Description of the project target
+    tasks: Task2[]; // Array of tasks related to the project target
+    company_name: string; // Name of the company for the project target
+    created_by: User; // User who created the project target
+    createdAt: string; // Timestamp of project target creation
+    updatedAt: string; // Timestamp of last update
+    __v: number; // Version key
+  }
+
     
   interface AuthContextType {
     isAuthenticated: boolean;
@@ -112,6 +165,12 @@ interface UserNotification {
     loading: boolean;
     companyTasks: Task[] | null;
     setCompanyTasks: React.Dispatch<React.SetStateAction<Task[] | null>>;
+    latestProject: ProjectTarget | null;
+    setLatestProject: React.Dispatch<React.SetStateAction<ProjectTarget | null>>;
+    Projects: ProjectTarget[] | null;
+    setProjects: React.Dispatch<React.SetStateAction<ProjectTarget[] | null>>;
+    materials: Resource2[];
+    setMaterials: React.Dispatch<React.SetStateAction<Resource2[]>>;
   }
 
 
@@ -124,11 +183,41 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [ KPI,  setKPI] = useState<KPI | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [companyTasks, setCompanyTasks] = useState<Task[] | null>(null);
+  const [latestProject, setLatestProject] = useState<ProjectTarget | null>(null);
+  const [Projects, setProjects] = useState<ProjectTarget[] | null>(null);
+  const [materials, setMaterials] = useState<Resource2[]>([]); // Adjusting to use Resource type
+
 
   const fetchAdminTasks = async () => {
     try {
       const response = await axios.get('/api/tasks');
       setCompanyTasks(response.data.tasks);
+    } catch (error) {
+      console.error('Failed to fetch admin tasks:', error);
+    }
+  };
+
+  const FetchMaterials = async() => {
+    try {
+      const response = await axios.get('/api/materials/');
+      setMaterials(response.data);
+    } catch (error) {
+      console.error('Error fetching materials:', error);
+    }
+  }
+
+ const fetchLatestProject = async () => {
+    try {
+      const response = await axios.post('/api/tasks/latestProjectTarget');
+      setLatestProject(response.data.latestProject);
+    } catch (error) {
+      console.error('Failed to fetch admin tasks:', error);
+    }
+  };
+  const fetchProject = async () => {
+    try {
+      const response = await axios.post('/api/tasks/getProjectTargets');
+      setProjects(response.data.projectTargets);
     } catch (error) {
       console.error('Failed to fetch admin tasks:', error);
     }
@@ -146,6 +235,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             const user = response.data.user;
             if (user.role === 'Admin') {
               await fetchAdminTasks();
+              await fetchLatestProject();
+              await fetchProject();
+              await FetchMaterials();
             }
             setIsAuthenticated(true);
             if (user.tasks && user.tasks.length > 0){                    
@@ -201,7 +293,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI, loading, companyTasks, setCompanyTasks }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI,loading, companyTasks, setCompanyTasks, latestProject, setLatestProject, Projects, setProjects, materials, setMaterials }}>
       {children}
     </AuthContext.Provider>
   );

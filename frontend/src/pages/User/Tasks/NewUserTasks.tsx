@@ -74,6 +74,7 @@ export const NewUserTasks = () => {
       {loading ? (
                 <Skeleton count={5} height={20} width="100%" />
               ) : (
+      <>{ tasks && tasks.filter(task => task.status === 'New').length > 0 ?
       <table className="table-auto w-full text-xs">
           <thead className="">
             <tr>
@@ -138,7 +139,10 @@ export const NewUserTasks = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> :
+        <div className="flex justify-center items-center text-lg opacity-30 w-full h-[56vh]"> No new tasks </div>
+        }
+        </>
               )}
         <TaskDetailsModal
           isOpen={isDetailsModalOpen}

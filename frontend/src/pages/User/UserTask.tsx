@@ -123,6 +123,7 @@ export const UserTask1 = () => {
               {loading ? (
                 <Skeleton count={5} height={20} width="100%" />
               ) : (
+                <>{ tasks && tasks.filter(task => task.status === 'New').length > 0 ?
                 <table className="table-auto w-full text-xs">
                   <thead>
                     <tr>
@@ -142,7 +143,10 @@ export const UserTask1 = () => {
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </table>  :
+              <div className="flex justify-center items-center text-lg opacity-30 w-full h-full"> No new tasks </div>
+              }
+            </>
               )}
             </div>
             <button 

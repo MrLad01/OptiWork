@@ -76,7 +76,8 @@ export const AllUserTasks = () => {
       {loading ? (
         <Skeleton count={5} height={20} width="100%" />
       ) : (
-        <table className="table-auto w-full text-xs">
+        <>
+        { tasks && tasks.length > 0 ? <table className="table-auto w-full text-xs">
           <thead className="">
             <tr>
               <th className="px-2 py-1">Task Number</th>
@@ -156,7 +157,10 @@ export const AllUserTasks = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> :
+        <div className="flex justify-center items-center text-lg opacity-30 w-full h-[56vh]"> You have no history of any tasks </div>
+        }
+        </>
       )}
       <TaskDetailsModal
         isOpen={isDetailsModalOpen}

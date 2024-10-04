@@ -1,19 +1,42 @@
 
+import Skeleton from "react-loading-skeleton";
 import { Task, useAuth } from "../../context/AuthContext";
-import {  formatDate, formatTime, getGreeting } from "../../helper"
+import {  formatDate, formatTime, getGreeting, getStatusClass } from "../../helper"
 import { useEffect, useState } from "react";
+import CustomProgressCircle from "../../components/CustomProgressCircle";
 
 export const Addashboard = () => {
-  const { user, companyTasks } = useAuth();
-  const task = companyTasks !== null ? companyTasks : [];
+  const { user, latestProject } = useAuth();
+  const task = latestProject !== null ? latestProject.tasks : [];
   const [ tasks, setTasks ] = useState<Task[]>(task);
+  const [ loading, setLoading ] = useState<boolean>();
+
   const [currentDate] = useState(new Date());
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  // const users = latestProject && latestProject.tasks.flatMap(task => task.assigned_user);
+    // Extracting unique users using a Set
+ // Ensure the 'assigned_user' is treated as an array
+    const users = latestProject
+    ? Array.from(
+        new Set(
+          latestProject.tasks.flatMap(task => 
+            Array.isArray(task.assigned_user) ? task.assigned_user.map(user => user._id) : [task.assigned_user._id]
+          ).filter(Boolean)
+        )
+      ).map(userId =>
+        latestProject.tasks.flatMap(task => 
+          Array.isArray(task.assigned_user) ? task.assigned_user : [task.assigned_user]
+        ).find(user => user._id === userId)
+      )
+    : [];
+
 
 
   const pendingTasksCount = tasks.filter(task => task.status === 'Pending').length;
   const inprogressTasksCount = tasks.filter(task => task.status === 'In-Progress').length;
   const completedTasksCount = tasks.filter(task => task.status === 'Completed').length;
+  const projectPercent = completedTasksCount / tasks.length;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -71,19 +94,67 @@ export const Addashboard = () => {
           </div>
           <div className="w-full h-[31%] bg-white rounded-md p-3 flex flex-col gap-2 justify-between">
             <h2 className="text-sm font-medium">Update on the Tasks so far</h2>
-            <div className="w-full h-full border-x border-slate-200 overflow-y-scroll rounded-xl p-3"></div>
+            <div className="w-full h-full border-x border-slate-200 overflow-y-scroll rounded-xl p-3">
+            {loading ? (
+                  <Skeleton count={5} height={20} width="90%" />
+                ) : (
+                  <table className="table-auto w-full text-[0.82rem] text-left border-white">
+                    <thead>
+                      <tr>
+                        <th className="px-4 py-1">Task Name</th>
+                        <th className="px-4 py-1">Due Date</th>
+                        <th className="px-4 py-1">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {tasks.slice(0, 20).map((task) => (
+                        <tr key={task.task_number}>
+                          <td className="border px-4 py-2">{task.task_name}</td>
+                          <td className="border px-4 py-2">{formatDate(task.due_date)}</td>
+                          <td className={`${getStatusClass(task.status)} font-medium border px-4 py-2`}>{task.status === 'Blocked' ? 'Rejected' : task.status}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+            </div>
           </div>
           <div className="w-full h-[31%] bg-white rounded-md p-3 flex flex-col gap-2 justify-between">
             <h2 className="text-sm font-medium">Users Summary</h2>
-            <div className="w-full h-full border-x border-slate-200 overflow-y-scroll rounded-xl p-3"></div>
+            <div className="w-full h-full border-x border-slate-200 overflow-y-scroll rounded-xl p-3">
+            {loading ? (
+                  <Skeleton count={5} height={20} width="90%" />
+                ) : (
+                  <table className="table-auto w-full text-[0.82rem] text-left border-white">
+                    <thead>
+                      <tr>
+                        <th className="px-4 py-1">First Name</th>
+                        <th className="px-4 py-1">Last Name</th>
+                        <th className="px-4 py-1">Username</th>
+                        <th className="px-4 py-1">Role</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      { users && users.slice(0, 10).map((person) => (
+                        <tr key={person._id.$oid} className="border-b">
+                          <td className="px-4 py-1">{person.first_name}</td>
+                          <td className="px-4 py-1">{person.last_name}</td>
+                          <td className="px-4 py-1">{person.username}</td>
+                          <td className="px-4 py-1">{person.role}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+            </div>
           </div>
         </div>
         <div className="w-[40%] h-full flex flex-col justify-between">
           <div className="w-full h-[49%] bg-white rounded-md p-3 flex flex-col gap-2 justify-between">
             <h2 className="text-[0.905rem] font-medium">Summary on Project target of the week</h2>
             <div className="w-full h-full flex flex-col items-center justify-between pt-2">
-              PieChart
-              <span className="text-pretty text-center text-xs w-[60%]">Target: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid soluta placeat suscipit.</span>
+              <CustomProgressCircle percent={projectPercent} width={120} height={120} />
+              <span className="text-pretty text-center text-xs w-[60%]">Target: {latestProject?.description}</span>
             </div>
           </div>
           <div className="w-full h-[49%] bg-white rounded-md p-3 flex flex-col gap-2 justify-between">

@@ -54,6 +54,7 @@ export const PendingUserTasks = () => {
       {loading ? (
                 <Skeleton count={5} height={20} width="100%" />
               ) : (
+        <>{ tasks && tasks.filter(task => task.status === 'Pending').length > 0 ?
       <table className="table-auto w-full text-xs">
           <thead className="">
             <tr>
@@ -104,7 +105,10 @@ export const PendingUserTasks = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> :
+        <div className="flex justify-center items-center text-lg opacity-30 w-full h-[56vh]"> You have no pending tasks </div>
+        }
+        </>
               )}
         <TaskDetailsModal
           isOpen={isDetailsModalOpen}
