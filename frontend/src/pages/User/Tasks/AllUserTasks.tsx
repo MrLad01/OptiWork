@@ -50,9 +50,11 @@ export const AllUserTasks = () => {
     setIsDetailsModalOpen(true);
   };
 
-  const handleStartTask = (task: any) => {
+  const handleStartTask = async(task: any) => {
     setSelectedTask(task);
     setIsStartTaskModalOpen(true);
+    // console.log(task);
+    
   };
 
   const handleSubmitTask = (task: any) => {

@@ -281,10 +281,10 @@ router.patch('/:id/start', async (req, res) => {
       return res.status(400).json({ message: 'Task cannot be started in its current status', status: task.status });
     }
 
-    // Ensure the logged-in user belongs to the same company as the task's assigned user
-    if (!task.assigned_user || task.assigned_user.company_name !== company_name) {
-      return res.status(403).json({ message: 'You are not authorized to start this task' });
-    }
+    // // Ensure the logged-in user belongs to the same company as the task's assigned user
+    // if (!task.assigned_user || task.assigned_user.company_name !== company_name) {
+    //   return res.status(403).json({ message: 'You are not authorized to start this task' });
+    // }
 
     // Log the old status and change the status to 'In-Progress'
     const oldStatus = task.status;

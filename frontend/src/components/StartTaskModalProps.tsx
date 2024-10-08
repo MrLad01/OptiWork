@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 interface StartTaskModalProps {
@@ -12,9 +13,22 @@ const StartTaskModal: React.FC<StartTaskModalProps> = ({ isOpen, onClose, task, 
 
   if (!isOpen || !task) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     onStartTask(task.id);
+    
+    
+    try{
+      // Assuming task.id is the task ID or user ID, depending on your API structure
+      const response = await axios.patch(`/api/tasks/${task._id}/start`);
+
+      // Handle the success response
+      console.log('Task started successfully:', response.data);
+
+      // Optionally, update the task status in your local state or perform other actions
+    } catch (error) {
+      console.error('Error starting the task:', (error as Error).message);
+    }
     onClose();
   };
 
@@ -23,7 +37,7 @@ const StartTaskModal: React.FC<StartTaskModalProps> = ({ isOpen, onClose, task, 
       <div className="bg-white p-4 rounded-lg w-1/3">
         <h2 className="text-xl font-bold mb-4">Start Task: {task.task_name}</h2>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label htmlFor="startTime" className="block text-sm font-medium text-gray-700">Start Time</label>
             <input
               type="time"
@@ -33,7 +47,7 @@ const StartTaskModal: React.FC<StartTaskModalProps> = ({ isOpen, onClose, task, 
               required
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
             />
-          </div>
+          </div> */}
           <div className="flex justify-end">
             <button
               type="button"

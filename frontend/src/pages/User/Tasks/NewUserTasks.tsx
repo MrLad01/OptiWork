@@ -19,7 +19,6 @@ export const NewUserTasks = () => {
  
 
 
-  // const usersTasks = tasks.filter(task => task.assigned_user.$oid === user?._id.$oid);
 
 
   useEffect(() => {
@@ -39,9 +38,21 @@ export const NewUserTasks = () => {
     setIsDetailsModalOpen(true);
   };
 
-  const handleStartTask = (task: any) => {
+  const handleStartTask =  async(task: any) => {
     setSelectedTask(task);
     setIsStartTaskModalOpen(true);
+
+    try{
+      // Assuming task.id is the task ID or user ID, depending on your API structure
+      const response = await axios.patch(`/api/users/${task.id}/start`);
+
+      // Handle the success response
+      console.log('Task started successfully:', response.data);
+
+      // Optionally, update the task status in your local state or perform other actions
+    } catch (error) {
+      console.error('Error starting the task:', (error as Error).message);
+    }
   };
 
   const updateTaskStatus = (taskId: string, newStatus: string) => {
