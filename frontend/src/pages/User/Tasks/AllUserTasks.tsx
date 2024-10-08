@@ -61,7 +61,7 @@ export const AllUserTasks = () => {
   };
 
   const updateTaskStatus = (taskId: string, newStatus: string) => {
-    axios.patch(`https://optiwork.onrender.com/api/tasks/${taskId}`, { status: newStatus })
+    axios.patch(`/api/tasks/${taskId}`, { status: newStatus })
       .then(response => {
         // setTasks(tasks.map(task => task.id === taskId ? { ...task, status: newStatus } : task));
         return response.data

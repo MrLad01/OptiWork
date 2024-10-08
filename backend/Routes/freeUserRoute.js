@@ -44,7 +44,7 @@ router.post('/auth/login', async (req, res) => {
     const { username, password } = req.body;
 
     if(req.session.user){
-      return res.status(401).json({ success: false, message: 'Another user is Logged In already'})
+      return res.status(200).json({ success: false, user: req.session.user})
     }
     
     // Find the user in the database

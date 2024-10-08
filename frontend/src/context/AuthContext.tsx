@@ -22,7 +22,7 @@ interface UserNotification {
       status: string;
       completion_date: string;
       resources_used: string;  
-      estimated_time: number;
+      estimated_time: number | null;
       actual_time: number;
     }
   
@@ -34,6 +34,20 @@ interface UserNotification {
     last_name: string;
     username: string;
     password: string;
+    company_name: string;
+    company_email: string;
+    image: string;
+    role: string;
+    skill: string[];
+    notification: UserNotification[];
+    tasks: UserTask[];
+  }
+  
+  export interface User2 {
+    _id: string;
+    first_name: string;
+    last_name: string;
+    username: string;
     company_name: string;
     company_email: string;
     image: string;
@@ -157,7 +171,9 @@ interface UserNotification {
     isAuthenticated: boolean;
     setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
     user: User | null;  // To store the user details after login
+    users: User2[] | null;  // To store the user details after login
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
+    setUsers: React.Dispatch<React.SetStateAction<User2[] | null>>;
     login: (userData: UserLogin) => void; // Now passes user data on login
     logout: () => void;
     KPI: KPI | null;
@@ -180,6 +196,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
+  const [users, setUsers] = useState<User2[] | null>(null);
   const [ KPI,  setKPI] = useState<KPI | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [companyTasks, setCompanyTasks] = useState<Task[] | null>(null);
@@ -194,6 +211,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setCompanyTasks(response.data.tasks);
     } catch (error) {
       console.error('Failed to fetch admin tasks:', error);
+    }
+  };
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get('/api/users');
+      setUsers(response.data);
+    } catch (error) {
+      console.error('Failed to fetch Users:', error);
     }
   };
 
@@ -211,7 +236,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const response = await axios.post('/api/tasks/latestProjectTarget');
       setLatestProject(response.data.latestProject);
     } catch (error) {
-      console.error('Failed to fetch admin tasks:', error);
+      console.error('Failed to fetch latest project:', error);
     }
   };
   const fetchProject = async () => {
@@ -219,7 +244,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const response = await axios.post('/api/tasks/getProjectTargets');
       setProjects(response.data.projectTargets);
     } catch (error) {
-      console.error('Failed to fetch admin tasks:', error);
+      console.error('Failed to fetch projects:', error);
     }
   };
 
@@ -238,6 +263,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
               await fetchLatestProject();
               await fetchProject();
               await FetchMaterials();
+              await fetchUsers();
             }
             setIsAuthenticated(true);
             if (user.tasks && user.tasks.length > 0){                    
@@ -293,7 +319,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, KPI, setKPI,loading, companyTasks, setCompanyTasks, latestProject, setLatestProject, Projects, setProjects, materials, setMaterials }}>
+    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated, login, logout, user, setUser, users, setUsers, KPI, setKPI,loading, companyTasks, setCompanyTasks, latestProject, setLatestProject, Projects, setProjects, materials, setMaterials }}>
       {children}
     </AuthContext.Provider>
   );

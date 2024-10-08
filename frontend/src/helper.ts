@@ -1,3 +1,5 @@
+import { Task2 } from "./context/AuthContext";
+
 interface UserTask {
     task_name: string;
     due_date: string;
@@ -6,8 +8,8 @@ interface UserTask {
     status: string;
     completion_date: string;
     resources_used: string;  
-    estimated_time: string;
-    actual_time: string;
+    estimated_time: number | null;
+    actual_time: number | null;
   }
 
 export const formattedNumber = (number: Number) => {
@@ -132,8 +134,18 @@ export const calculateTaskCompletionRate = (tasks: UserTask[]) => {
     const totalTasks = tasks.length;
     return ( Math.round(( completedTasks.length / totalTasks ) * 100) );
 }
+export const calculateTaskCompletionRate2 = (tasks: Task2[]) => {
+    const completedTasks = tasks.filter(task => task.status === "Completed");
+    const totalTasks = tasks.length;
+    return ( Math.round(( completedTasks.length / totalTasks ) * 100) );
+}
 
 export const calculateResourceUtilizationRate = (tasks: UserTask[]) => {
+    const totalResourcesUsed = tasks.reduce((sum, task) => sum + (percentageToNumber(task.resources_used.length) || 0), 0);
+    const totalTasks = tasks.length;
+    return ( Math.round( totalResourcesUsed / totalTasks ) );
+}
+export const calculateResourceUtilizationRate2 = (tasks: Task2[]) => {
     const totalResourcesUsed = tasks.reduce((sum, task) => sum + (percentageToNumber(task.resources_used.length) || 0), 0);
     const totalTasks = tasks.length;
     return ( Math.round( totalResourcesUsed / totalTasks ) );
@@ -167,9 +179,42 @@ export const calculateTaskEfficiency = (tasks: UserTask[]) => {
 
   return taskEfficiency;
 };
+export const calculateTaskEfficiency2 = (tasks: Task2[]) => {
+  // Filter out tasks where estimated_time is null, undefined, or 0 to avoid invalid calculations
+  const validTasks = tasks.filter(
+    task => task.status === "Completed" && typeof task.estimated_time === 'number' && task.estimated_time > 0
+  );
+
+  if (validTasks.length === 0) {
+    console.log("No valid tasks with estimated_time available.");
+    return 0;  // Return 0 if there are no valid tasks
+  }
+
+  // Calculate efficiency rates only for tasks with valid estimated_time
+  const efficiencyRates = validTasks.map(task => {
+    const actualTime = typeof task.actual_time === 'number' ? task.actual_time : 0;
+    const estimatedTime = typeof task.estimated_time === 'number' ? task.estimated_time : 1; // Avoid division by 0
+    return actualTime / estimatedTime;
+  });
+
+  // Sum up the efficiency rates and calculate the average
+  const averageEfficiency = efficiencyRates.reduce((sum, rate) => sum + rate, 0);
+
+  // Calculate the final efficiency rate and return it as a percentage
+  const taskEfficiency = Math.round((averageEfficiency / efficiencyRates.length) * 100);
+
+  console.log(taskEfficiency);  // Log the calculated efficiency rate
+
+  return taskEfficiency;
+};
 
 export const calculateTaskOverdueRate = (tasks: UserTask[]) => {
     const overdueTasks = tasks.filter(task => new Date(task.completion_date) > new Date(task.due_date));
     const totalTasks = tasks.length;
     return ( Math.round( overdueTasks.length / totalTasks ) * 100 );
 }
+// export const calculateTaskOverdueRate2 = (tasks: Task2[]) => {
+//     const overdueTasks = tasks.filter(task => new Date(task.completion_date) > new Date(task.due_date));
+//     const totalTasks = tasks.length;
+//     return ( Math.round( overdueTasks.length / totalTasks ) * 100 );
+// }

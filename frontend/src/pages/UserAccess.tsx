@@ -9,7 +9,7 @@ import {  PuffLoader } from 'react-spinners';
 // import { set } from 'date-fns';
 
 const UserAccess = () => {
-    const { login, setUser, setKPI, setCompanyTasks, setLatestProject, setProjects, setMaterials } = useAuth();
+    const { login, setUser, setKPI, setCompanyTasks, setLatestProject, setProjects, setMaterials, setUsers } = useAuth();
     const navigate = useNavigate();
     const [access, setAccess] = useState<string>('logIn');
     const [activeInput, setActiveInput] = useState<string>('');
@@ -26,12 +26,21 @@ const UserAccess = () => {
         }
       };
 
+      const fetchUsers = async () => {
+        try {
+          const response = await axios.get('/api/users');
+          setUsers(response.data);
+        } catch (error) {
+          console.error('Failed to fetch Users:', error);
+        }
+      };
+
       const fetchLatestProject = async () => {
         try {
           const response = await axios.post('/api/tasks/latestProjectTarget');
           setLatestProject(response.data.latestProject);
         } catch (error) {
-          console.error('Failed to fetch admin tasks:', error);
+          console.error('Failed to fetch latest project:', error);
         }
       };
       const FetchMaterials = async() => {
@@ -47,7 +56,7 @@ const UserAccess = () => {
           const response = await axios.post('/api/tasks/getProjectTargets');
           setProjects(response.data.projectTargets);
         } catch (error) {
-          console.error('Failed to fetch admin tasks:', error);
+          console.error('Failed to fetch projects:', error);
         }
       };
 
@@ -70,6 +79,7 @@ const UserAccess = () => {
                     await fetchLatestProject();
                     await fetchProject();
                     await FetchMaterials();
+                    await fetchUsers();
                 }
                 if (user.tasks && user.tasks.length > 0){                    
                     const taskCompletionRate = calculateTaskCompletionRate(user.tasks);

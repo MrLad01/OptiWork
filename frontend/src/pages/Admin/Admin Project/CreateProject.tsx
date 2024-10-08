@@ -195,9 +195,8 @@ export const CreateProject = () => {
                     render={({ field }) => (
                       <DatePicker
                         className="w-full border border-gray-300 p-2 rounded"
-                        selected={startDate ? calculateOneWeekLater(new Date(startDate)) : null}
+                        selected={field.value ? new Date(field.value) : null}
                         onChange={(date) => field.onChange(date?.toISOString())}
-                        readOnly
                       />
                     )}
                   />
