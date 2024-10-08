@@ -327,10 +327,10 @@ router.patch('/:id/submit', async (req, res) => {
       return res.status(400).json({ message: 'Task must be In-Progress or Restarted to submit for approval', status: task.status });
     }
 
-    // Ensure the logged-in user belongs to the same company as the task's assigned user
-    if (!task.assigned_user || task.assigned_user.company_name !== company_name) {
-      return res.status(403).json({ message: 'You are not authorized to submit this task for approval' });
-    }
+    // // Ensure the logged-in user belongs to the same company as the task's assigned user
+    // if (!task.assigned_user || task.assigned_user.company_name !== company_name) {
+    //   return res.status(403).json({ message: 'You are not authorized to submit this task for approval' });
+    // }
 
     // Check if the user has provided resources used
     if (!resources_used || !resources_used.length) {
