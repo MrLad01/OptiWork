@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { useAuth, UserTask } from "../../../context/AuthContext";
@@ -63,14 +62,7 @@ export const AllUserTasks = () => {
   };
 
   const updateTaskStatus = (taskId: string, newStatus: string) => {
-    axios.patch(`/api/tasks/${taskId}`, { status: newStatus })
-      .then(response => {
-        // setTasks(tasks.map(task => task.id === taskId ? { ...task, status: newStatus } : task));
-        return response.data
-      })
-      .catch(error => {
-        console.error('Error updating task status:', error);
-      });
+      setTasks(tasks && tasks.map(task => task._id === taskId ? { ...task, status: newStatus } : task));
   };
 
   return (

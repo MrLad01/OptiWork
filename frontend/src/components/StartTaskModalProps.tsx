@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 
 interface StartTaskModalProps {
   isOpen: boolean;
@@ -9,7 +9,6 @@ interface StartTaskModalProps {
 }
 
 const StartTaskModal: React.FC<StartTaskModalProps> = ({ isOpen, onClose, task, onStartTask }) => {
-  const [startTime, setStartTime] = useState('');
 
   if (!isOpen || !task) return null;
 

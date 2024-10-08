@@ -166,7 +166,7 @@ export const calculateTaskEfficiency = (tasks: UserTask[]) => {
   const efficiencyRates = validTasks.map(task => {
     const actualTime = typeof task.actual_time === 'number' ? task.actual_time : 0;
     const estimatedTime = typeof task.estimated_time === 'number' ? task.estimated_time : 1; // Avoid division by 0
-    return actualTime / estimatedTime;
+    return actualTime / actualTime;
   });
 
   // Sum up the efficiency rates and calculate the average

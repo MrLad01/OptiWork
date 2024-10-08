@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useForm, Controller, useWatch } from 'react-hook-form';
+import { Task } from '../context/AuthContext';
+
 
 interface SubmitTaskModalProps {
   isOpen: boolean;
@@ -8,15 +11,36 @@ interface SubmitTaskModalProps {
 }
 
 const SubmitTaskModal: React.FC<SubmitTaskModalProps> = ({ isOpen, onClose, task, onSubmitTask }) => {
-  const [endTime, setEndTime] = useState('');
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  // const [endTime, setEndTime] = useState('');
 
   if (!isOpen || !task) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmitTask(task.id);
+    onSubmitTask(task._id);
     onClose();
   };
+
+  const addMaterialToTask = (taskIndex: number) => {
+    const updatedTasks = [...task];
+    if (updatedTasks[taskIndex].resources.length < 10) {
+      updatedTasks[taskIndex].resources.push({
+        material: '',
+        quantity: 0,
+      });
+      setTasks(updatedTasks);
+    }
+  };
+
+  const removeMaterialFromTask = (taskIndex: number, materialIndex: number) => {
+    const updatedTasks = [...tasks];
+    updatedTasks[taskIndex].resources = updatedTasks[taskIndex].resources.filter((_, i) => i !== materialIndex);
+    setTasks(updatedTasks);
+  };
+
+  
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -25,14 +49,14 @@ const SubmitTaskModal: React.FC<SubmitTaskModalProps> = ({ isOpen, onClose, task
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="endTime" className="block text-sm font-medium text-gray-700">End Time</label>
-            <input
+            {/* <input
               type="time"
               id="endTime"
               value={endTime}
               onChange={(e) => setEndTime(e.target.value)}
               required
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-            />
+            /> */}
           </div>
           <div className="flex justify-end">
             <button

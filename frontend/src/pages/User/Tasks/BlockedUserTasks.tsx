@@ -73,7 +73,7 @@ export const BlockedUserTasks = () => {
                 <Skeleton count={5} height={20} width="100%" />
               ) : (
       <>
-      { tasks && tasks.filter(task => task.status === 'Blocked').length > 0 ?
+      { tasks && tasks.filter(task => task.status === 'Declined').length > 0 ?
        <table className="table-auto w-full text-xs">
           <thead className="">
             <tr>
@@ -87,7 +87,7 @@ export const BlockedUserTasks = () => {
             </tr>
           </thead>
           <tbody>
-            {tasks && tasks.filter(task => task.status === 'Blocked').map((task) => (
+            {tasks && tasks.filter(task => task.status === 'Declined').map((task) => (
               <tr key={task._id}>
                 <td className="border px-2 py-1">{task.task_number}</td>
                 <td className="border px-2 py-1">{task.task_name}</td>

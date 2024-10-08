@@ -1,6 +1,6 @@
 
 import Skeleton from "react-loading-skeleton";
-import { Task, useAuth } from "../../context/AuthContext";
+import { Task2, useAuth } from "../../context/AuthContext";
 import {  formatDate, formatTime, getGreeting, getStatusClass } from "../../helper"
 import { useEffect, useState } from "react";
 import CustomProgressCircle from "../../components/CustomProgressCircle";
@@ -8,7 +8,7 @@ import CustomProgressCircle from "../../components/CustomProgressCircle";
 export const Addashboard = () => {
   const { user, latestProject } = useAuth();
   const task = latestProject !== null ? latestProject.tasks : [];
-  const [ tasks, setTasks ] = useState<Task[]>(task);
+  const [ tasks, setTasks ] = useState<Task2[]>(task);
   const [ loading, setLoading ] = useState<boolean>();
 
   const [currentDate] = useState(new Date());
@@ -21,7 +21,7 @@ export const Addashboard = () => {
     ? Array.from(
         new Set(
           latestProject.tasks.flatMap(task => 
-            Array.isArray(task.assigned_user) ? task.assigned_user.map(user => user._id) : [task.assigned_user._id]
+            Array.isArray(task.assigned_user) ? task.assigned_user.map(user => user._id.$oid) : task.assigned_user._id
           ).filter(Boolean)
         )
       ).map(userId =>
@@ -136,11 +136,11 @@ export const Addashboard = () => {
                     </thead>
                     <tbody>
                       { users && users.slice(0, 10).map((person) => (
-                        <tr key={person._id.$oid} className="border-b">
-                          <td className="px-4 py-1">{person.first_name}</td>
-                          <td className="px-4 py-1">{person.last_name}</td>
-                          <td className="px-4 py-1">{person.username}</td>
-                          <td className="px-4 py-1">{person.role}</td>
+                        <tr key={person && person._id.$oid} className="border-b">
+                          <td className="px-4 py-1">{person && person.first_name}</td>
+                          <td className="px-4 py-1">{person && person.last_name}</td>
+                          <td className="px-4 py-1">{person && person.username}</td>
+                          <td className="px-4 py-1">{person && person.role}</td>
                         </tr>
                       ))}
                     </tbody>
